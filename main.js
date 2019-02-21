@@ -12,12 +12,14 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('office', 'assets/prototype/office.png');
         this.load.image('reporter', 'assets/prototype/reporter.png');
         this.load.image('roomFloor', 'assets/prototype/roomFloor.png');
+        this.load.image('storyUIBack', 'assets/prototype/storyUI.png');
+        this.load.spritesheet('notif', 'assets/prototype/notif.png', {frameWidth: 30, frameHeight: 30});
     }
     
     create(){
         this.isPaused = false;
-        const testBackground = this.add.image(640, 360, "testScreen");
-        this.playButton = new Button(this, 640, 520, null, "menuBtn", null, 'opscn_scene_NewsRoom');
+        const testBackground = this.add.image(960, 540, "testScreen");
+        this.playButton = new Button(this, 960, 810, null, "menuBtn", null, 'opscn_scene_NewsRoom');
         this.playButton.spawnButton();
         //this.testBtn = this.add.sprite(640, 520, "menuBtn");
         
@@ -30,8 +32,8 @@ class sceneBoot extends Phaser.Scene{
 
 var config = {
     type: Phaser.AUTO,
-        width: 1280,
-        height: 720,
+        width: 1920,
+        height: 1080,
         scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social],
         physics: {
             default: 'arcade',
@@ -41,7 +43,7 @@ var config = {
         },
         transparent: false,
         antialias: false,
-        scaleMode: Phaser.Scale.ScaleModes.NONE,
+        scaleMode: Phaser.Scale.ScaleModes.ENVELOP,
 };
 
 var game = new Phaser.Game(config);

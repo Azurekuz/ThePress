@@ -19,6 +19,7 @@ class obj_department{
         this.depTextObj.setOrigin(0.5);
         this.phaserObject.body.immovable = true;
         this.phaserObject._objRef = this;
+        this.game.grp_departments.add(this.phaserObject);
     }
     
     accessDepartment(){

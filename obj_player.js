@@ -26,6 +26,7 @@ class obj_player{
         this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, this.spriteID);
         this.phaserObject.setCollideWorldBounds(true);
         this.phaserObject._objRef = this;
+        this.phaserObject.depth = 100;
     }
     
     update(delta){
