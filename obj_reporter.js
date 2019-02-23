@@ -24,11 +24,16 @@ class obj_reporter{
     }
     
     despawn(){
-        this.phaserObject.kill();
+        if(this.needsNotify === true && (this.notif != null || this.notif != undefined)){
+            this.notif.phaserObject.destroy();
+            delete this.notif;
+        }
+        this.phaserObject.destroy();
     }
     
     pitch(story){
         this.storyPitch = story;
+        this.needsNotify = true;
         this.game.notifications.addNotif(this);
     }
     

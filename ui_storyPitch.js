@@ -6,4 +6,12 @@ class ui_storyPitch{
         this.curStory = storyObj;
         this.curReporter = reporterObj;
     }
+    
+    popUp(){
+        
+    }
+    
+    dismiss(){
+        
+    }
 }

@@ -5,9 +5,9 @@ class sys_notify{
     }
     
     addNotif(owner){
-        var newNotif = new obj_notif(this.game, owner, 'notif')
-        this.notifArray.push(newNotif);
-        newNotif.spawn();
+        owner.notif = new obj_notif(this.game, owner, 'notif')
+        this.notifArray.push(owner.notif);
+        owner.notif.spawn();
     }
     
     removeNotif(owner){

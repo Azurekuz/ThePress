@@ -7,6 +7,7 @@ class obj_desk{
         this.height = height;
         this.spriteID = spriteID;
         this.deskText = null;
+        this.slotID;
         
         this.workingReporter = reporterObj;
         this.workerActive = false;
