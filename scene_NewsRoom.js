@@ -18,22 +18,18 @@ class scene_NewsRoom extends Phaser.Scene {
         this.add.image(960, 540, 'roomFloor');
         this.office = new obj_department(this, 198, 191, 507, 383, " ", 'office');
         this.ads = new obj_department(this, 281, 945, 406, 406, " ", 'adsRoom');
+        //this.waterCooler = new obj_department(this, );
         this.office.spawnDepartmentObject();
         this.ads.spawnDepartmentObject();
         this.player = new obj_player(this, 1186, 94, 47, 47, 'playerSprite');
         this.player.spawn();
         
-        this.officeDesks = new struct_deskSet(this, 873, 300, 3, 3, 280, 304, 196, 304, 'newsDesk', 3, 9);
+        this.officeDesks = new struct_deskSet(this, 873, 1000, 3, 3, 310, 210, 295, 201, 'newsDesk', 3, 3);
         //928
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
-        this.officeDesks.addDesk();
+        for(var i = 0; i < 3; i += 1){
+            this.officeDesks.addDesk();
+        }
+        
         this.testReporter = new obj_reporter(this, 0, 0, 47, 47, "Albert", 'reporter');
         this.officeDesks.deskArray[0].hire(this.testReporter);
         

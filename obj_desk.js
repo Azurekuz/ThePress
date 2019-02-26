@@ -30,20 +30,20 @@ class obj_desk{
     
     hire(reporterObj){
         this.workingReporter = reporterObj;
-        this.workingReporter.xLocation = this.xLocation + 125;
-        this.workingReporter.yLocation = this.yLocation;
+        this.workingReporter.xLocation = this.xLocation + 85;
+        this.workingReporter.yLocation = this.yLocation - 75;
         this.deskText = this.game.add.text(this.xLocation, this.yLocation, this.workingReporter.name, {fontFamily: "Calibri", align: "center", color:"#000", fontStyle: "bold", fontSize: 16});
         this.deskText.setOrigin(0.5);
     }
     
     leaveWork(){
         this.workerActive = false;
-        this.updateDesk();
+        //this.updateDesk();
     }
     
     setToWork(){
         this.workerActive = true;
-        this.updateDesk();
+        //this.updateDesk();
     }
     
     updateDesk(){
