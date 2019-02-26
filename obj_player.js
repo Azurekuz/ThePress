@@ -1,5 +1,5 @@
 class obj_player{
-    constructor(context, xLoc, yLoc, width, height, spriteID){
+    constructor(context, xLoc, yLoc, width, height, spriteID, speed = 250){
         this.game = context;
         
         this.xLocation = xLoc;
@@ -7,6 +7,7 @@ class obj_player{
         this.width = width;
         this.height = height;
         this.spriteID = spriteID;
+        this.speed = speed;
         
         this.phaserObject = null;
         this.isInteracting = false;
@@ -35,28 +36,29 @@ class obj_player{
     
     checkControls(){
         if(this.game.controls.upKey.isDown){
-            this.phaserObject.setVelocityY(-150);
+            this.phaserObject.setVelocityY(-this.speed);
         }
         if(this.game.controls.downKey.isDown){
-            this.phaserObject.setVelocityY(150);   
+            this.phaserObject.setVelocityY(this.speed);   
         }
         if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown){
             this.phaserObject.setVelocityY(0);
         }
         if(this.game.controls.leftKey.isDown){
-            this.phaserObject.setVelocityX(-150);
+            this.phaserObject.setVelocityX(-this.speed);
         }
         if(this.game.controls.rightKey.isDown){
-            this.phaserObject.setVelocityX(150);
+            this.phaserObject.setVelocityX(this.speed);
         }
         if(!this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown){
             this.phaserObject.setVelocityX(0);
         }
         if(this.game.controls.interactKey.isDown && !this.isInteracting){
+            this.isInteracting = true;
+            //this.phaserObject.setFrame(1);
+        }else if(!this.game.controls.interactKey.isDown && this.isInteracting){
             this.isInteracting = false;
-            this.phaserObject.setFrame(1);
-        }else if(!this.game.controls.interactKey.isDown && !this.isInteracting){
-            this.phaserObject.setFrame(0);
+            //this.phaserObject.setFrame(0);
         }
     }
     

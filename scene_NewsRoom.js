@@ -16,12 +16,14 @@ class scene_NewsRoom extends Phaser.Scene {
         this.notifications = new sys_notify(this);
         
         this.add.image(960, 540, 'roomFloor');
-        this.office = new obj_department(this, 198, 191, 507, 383, " ", 'office');
+        this.office = new obj_department(this, 198, 315, 507, 383, " ", 'office');
         this.ads = new obj_department(this, 281, 945, 406, 406, " ", 'adsRoom');
-        //this.waterCooler = new obj_department(this, );
+        this.waterCooler = new obj_department(this, 1160, 62, 151, 264, " ", 'cooler');
+        this.welMat = this.add.sprite(1855, 152, 'welMat');
         this.office.spawnDepartmentObject();
         this.ads.spawnDepartmentObject();
-        this.player = new obj_player(this, 1186, 94, 47, 47, 'playerSprite');
+        this.waterCooler.spawnDepartmentObject();
+        this.player = new obj_player(this, 1650, 250, 47, 47, 'playerSprite');
         this.player.spawn();
         
         this.officeDesks = new struct_deskSet(this, 873, 1000, 3, 3, 310, 210, 295, 201, 'newsDesk', 3, 3);
@@ -30,7 +32,7 @@ class scene_NewsRoom extends Phaser.Scene {
             this.officeDesks.addDesk();
         }
         
-        this.testReporter = new obj_reporter(this, 0, 0, 47, 47, "Albert", 'reporter');
+        this.testReporter = new obj_reporter(this, 0, 0, 14, 28, "Albert", 'reporter');
         this.officeDesks.deskArray[0].hire(this.testReporter);
         
         this.officeDesks.spawn();
@@ -38,8 +40,8 @@ class scene_NewsRoom extends Phaser.Scene {
         this.officeDesks.deskArray[0].workingReporter.pitch(null);
         
         this.physics.add.collider(this.player.phaserObject, this.grp_departments, this.interactWith);
-        this.physics.add.collider(this.player.phaserObject, this.grp_desks);
-        this.physics.add.collider(this.player.phaserObject, this.grp_workers, this.storyPitch);
+        this.physics.add.collider(this.player.phaserObject, this.grp_desks, this.storyPitch);
+        this.physics.add.collider(this.player.phaserObject, this.grp_workers);
         //this.add.image(165, 167, 'office');
         //this.add.image(135, 585, 'adsRoom');
     }
@@ -54,7 +56,11 @@ class scene_NewsRoom extends Phaser.Scene {
         }
     }
     
-    storyPitch(player, reporter){
-        reporter.objRef.despawn();
+    storyPitch(player, desk){
+        if(player._objRef.isInteracting && (desk.objRef.workingReporter)){
+           if(desk.objRef.workingReporter.needsNotify){
+            console.log("I AM PITCHING YOU A STORY! ");
+            }
+        }
     }
 }
