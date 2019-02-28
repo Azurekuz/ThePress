@@ -18,15 +18,20 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('notif', 'assets/prototype/notif.png', {frameWidth: 30, frameHeight: 30});
         this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler1.png', {frameWidth: 151, frameHeight: 124});
         this.load.spritesheet('welMat', 'assets/stage/newsRoom/Welcome1.png', {frameWidth: 151, frameHeight: 264});
+        this.load.image('uiBack', 'assets/ui/storyPitch/uiBackground.png');
+        this.load.image('textBubble', 'assets/ui/storyPitch/textBubble.png');
+        this.load.spritesheet('smlBtn', 'assets/ui/storyPitch/pitchButton.png', {frameWidth: 75, frameHeight: 75});
+        this.load.spritesheet('srcBtn', 'assets/ui/storyPitch/sourceButton.png', {frameWidth: 225, frameHeight: 75});
     }
     
     create(){
         this.isPaused = false;
+        this.uiPaused = false;
         const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.
-        this.playButton = new Button(this, 960, 810, null, "menuBtn", null, 'opscn_scene_NewsRoom');
-        this.playButton.spawnButton();
+        this.playButton = new Button(this, 960, 810, 568, 54, null, "menuBtn", null, 'opscn_scene_NewsRoom');
+        this.playButton.spawn();
     }
 }
 

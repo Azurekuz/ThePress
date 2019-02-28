@@ -14,6 +14,7 @@ class scene_NewsRoom extends Phaser.Scene {
         this.grp_desks = this.add.group();
         this.grp_workers = this.add.group();
         this.notifications = new sys_notify(this);
+        this.ui_storyPitch = new ui_storyPitch(this, 0, 0, null, null);
         
         this.add.image(960, 540, 'roomFloor');
         this.office = new obj_department(this, 198, 315, 507, 383, " ", 'office');
@@ -59,7 +60,9 @@ class scene_NewsRoom extends Phaser.Scene {
     storyPitch(player, desk){
         if(player._objRef.isInteracting && (desk.objRef.workingReporter)){
            if(desk.objRef.workingReporter.needsNotify){
-            console.log("I AM PITCHING YOU A STORY! ");
+                player._objRef.game.ui_storyPitch.popUp(desk.objRef.workingReporter, desk.objRef.workingReporter.storyPitch);
+                desk.objRef.workingReporter.needsNotify = false;
+                player._objRef.game.uiPaused = true;
             }
         }
     }

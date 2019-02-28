@@ -1,12 +1,14 @@
 class Button{
     /* This is a custom button class that is hoverable and clickable. It is also organized with the 
     intention of allowing different kinds of functionalities depending on what it needs to be used for.*/
-    constructor(phaserGame, xLoc, yLoc, text = null, spriteID = null, textStyle = null, purposeID){
+    constructor(phaserGame, xLoc, yLoc, btnWidth, btnHeight, text = null, spriteID = null, textStyle = null, purposeID){
         this.game = phaserGame; /*This is a pattern I tend to have in my code so that Phaser's 
         functionality is not lost due to scope.*/
         this.xLocation = xLoc; //X Location of Button
         this.yLocation = yLoc; //Y Location of Button
-        this.buttonText = text; //Text on Butto
+        this.width = btnWidth; //Width of the button
+        this.height = btnHeight; //Height of the button
+        this.buttonText = text; //Text on Button
         this.spriteID = spriteID; //Phaser asset ID; How the button looks like, tends to be a spritesheet.
         this.textStyle = textStyle; //A variable meant to store CSS font styling like font-family, color, size, etc.
         this.purposeID = purposeID; //This defines the functionality and necessary parameters for the Button. This is used and requred for the "pointerdown" event or when the user clicks the given button.
@@ -15,7 +17,7 @@ class Button{
         this.phaserText = null;
     }
 
-    spawnButton(){
+    spawn(){
         if(this.phaserObjectExists()){ //Check to make sure spriteID was initialized.
             //Add the button sprite.
             this.phaserObject = this.game.add.sprite(this.xLocation, this.yLocation, this.spriteID);
