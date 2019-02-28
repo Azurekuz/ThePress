@@ -17,9 +17,9 @@ class scene_NewsRoom extends Phaser.Scene {
         this.ui_storyPitch = new ui_storyPitch(this, 0, 0, null, null);
         
         this.add.image(960, 540, 'roomFloor');
-        this.office = new obj_department(this, 198, 315, 507, 383, " ", 'office');
-        this.ads = new obj_department(this, 281, 945, 406, 406, " ", 'adsRoom');
-        this.waterCooler = new obj_department(this, 1160, 62, 151, 264, " ", 'cooler');
+        this.office = new obj_department(this, 198, 315, 349, 384, " ", 'office');
+        this.ads = new obj_department(this, 281, 945, 606, 330, " ", 'adsRoom');
+        this.waterCooler = new obj_department(this, 1160, 50, 171, 101, " ", 'cooler');
         this.welMat = this.add.sprite(1855, 152, 'welMat');
         this.office.spawnDepartmentObject();
         this.ads.spawnDepartmentObject();
@@ -27,7 +27,7 @@ class scene_NewsRoom extends Phaser.Scene {
         this.player = new obj_player(this, 1650, 250, 47, 47, 'playerSprite');
         this.player.spawn();
         
-        this.officeDesks = new struct_deskSet(this, 873, 1000, 3, 3, 310, 210, 295, 201, 'newsDesk', 3, 3);
+        this.officeDesks = new struct_deskSet(this, 873, 1001, 3, 3, 310, 210, 295, 201, 'nd_Glenn', 3, 3);
         //928
         for(var i = 0; i < 3; i += 1){
             this.officeDesks.addDesk();

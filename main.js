@@ -9,19 +9,24 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('testScreen', 'assets/ui/mainMenu/ThePressTestScreen.png');
         this.load.spritesheet('menuBtn', 'assets/ui/mainMenu/MenuButton.png', {frameWidth: 568, frameHeight: 54});
         this.load.spritesheet('playerSprite', 'assets/sprites/player.png', {frameWidth: 84, frameHeight: 168});
-        this.load.image('adsRoom', 'assets/stage/newsRoom/AdSales1.png');
-        this.load.image('newsDesk', 'assets/stage/newsRoom/Glenn1.png');
-        this.load.image('office', 'assets/stage/newsRoom/Office1.png');
+        this.load.image('adsRoom', 'assets/stage/newsRoom/AdSales.png');
+        this.load.image('nd_Glenn', 'assets/stage/newsRoom/Glenn.png');
+        this.load.image('nd_Laura', 'assets/stage/newsRoom/Laura.png');
+        this.load.image('office', 'assets/stage/newsRoom/Office.png');
         this.load.image('reporter', 'assets/prototype/reporter.png');
         this.load.image('roomFloor', 'assets/stage/newsRoom/roomFloor.png');
         this.load.image('storyUIBack', 'assets/prototype/storyUI.png');
         this.load.spritesheet('notif', 'assets/prototype/notif.png', {frameWidth: 30, frameHeight: 30});
-        this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler1.png', {frameWidth: 151, frameHeight: 124});
+        this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler.png', {frameWidth: 171, frameHeight: 101});
         this.load.spritesheet('welMat', 'assets/stage/newsRoom/Welcome1.png', {frameWidth: 151, frameHeight: 264});
-        this.load.image('uiBack', 'assets/ui/storyPitch/uiBackground.png');
-        this.load.image('textBubble', 'assets/ui/storyPitch/textBubble.png');
-        this.load.spritesheet('smlBtn', 'assets/ui/storyPitch/pitchButton.png', {frameWidth: 75, frameHeight: 75});
-        this.load.spritesheet('srcBtn', 'assets/ui/storyPitch/sourceButton.png', {frameWidth: 225, frameHeight: 75});
+        this.load.image('uiBack', 'assets/ui/storyPitch/ReporterUI_background.png');
+        this.load.image('textBubble', 'assets/ui/storyPitch/ReporterUI_Bubble.png');
+        this.load.spritesheet('ynBtn', 'assets/ui/storyPitch/Reporter_YesOrNo.png', {frameWidth: 195, frameHeight: 141});
+        this.load.spritesheet('dlBtn', 'assets/ui/storyPitch/Reporter_Deadline.png', {frameWidth: 137, frameHeight: 101});
+        this.load.spritesheet('srcBtn', 'assets/ui/storyPitch/Reporter_Source.png', {frameWidth: 432, frameHeight: 77});
+        this.load.image('headerRun', 'assets/ui/storyPitch/RunIt.png');
+        this.load.image('headerSrc','assets/ui/storyPitch/MainSource.png');
+        this.load.image('headerDln', 'assets/ui/storyPitch/Deadline.png');
     }
     
     create(){
