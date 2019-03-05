@@ -16,7 +16,7 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('reporter', 'assets/prototype/reporter.png');
         this.load.image('roomFloor', 'assets/stage/newsRoom/roomFloor.png');
         this.load.image('storyUIBack', 'assets/prototype/storyUI.png');
-        this.load.spritesheet('notif', 'assets/prototype/notif.png', {frameWidth: 30, frameHeight: 30});
+        this.load.spritesheet('notif', 'assets/sprites/SpeechBubbleFull.png', {frameWidth: 361, frameHeight: 230});
         this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler.png', {frameWidth: 171, frameHeight: 101});
         this.load.spritesheet('welMat', 'assets/stage/newsRoom/Welcome1.png', {frameWidth: 151, frameHeight: 264});
         this.load.image('uiBack', 'assets/ui/storyPitch/ReporterUI_background.png');

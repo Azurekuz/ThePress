@@ -48,7 +48,12 @@ class scene_NewsRoom extends Phaser.Scene {
     }
     
     update(delta){
-        this.player.update();
+        if(!this.isPaused){
+            this.player.update();
+            if(this.ui_storyPitch.isActive){
+               this.ui_storyPitch.update();
+            }
+        }
     }
     
     interactWith(player, department){
@@ -61,8 +66,11 @@ class scene_NewsRoom extends Phaser.Scene {
         if(player._objRef.isInteracting && (desk.objRef.workingReporter)){
            if(desk.objRef.workingReporter.needsNotify){
                 player._objRef.game.ui_storyPitch.popUp(desk.objRef.workingReporter, desk.objRef.workingReporter.storyPitch);
+                player._objRef.game.ui_storyPitch.isActive = true;
+                player._objRef.game.ui_storyPitch.curReporter = desk.objRef.workingReporter;
                 desk.objRef.workingReporter.needsNotify = false;
                 player._objRef.game.uiPaused = true;
+                
             }
         }
     }

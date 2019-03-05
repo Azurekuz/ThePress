@@ -5,18 +5,21 @@ class sys_notify{
     }
     
     addNotif(owner){
-        owner.notif = new obj_notif(this.game, owner, 'notif')
+        owner.notif = new obj_notif(this.game, owner, 'notif');
+        console.log(owner);
         this.notifArray.push(owner.notif);
         owner.notif.spawn();
     }
     
     removeNotif(owner){
         var newArray = [];
-        for(i = 0; i < this.notifArray; i += 1){
-            if(!(this.notifArray[i].owner === owner)){
+        for(var i = 0; i < this.notifArray.length; i += 1){
+            console.log(i);
+            if(!(this.notifArray[i].owner.name == owner.name)){
                 newArray.push(this.notifArray[i]);
             }else{
-                this.notifArray[i].phaserObject.kill();
+                console.log("Destroying Phaser Object");
+                this.notifArray[i].despawn();
             }
         }
     }
