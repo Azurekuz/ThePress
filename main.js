@@ -27,6 +27,8 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('headerRun', 'assets/ui/storyPitch/RunIt.png');
         this.load.image('headerSrc','assets/ui/storyPitch/MainSource.png');
         this.load.image('headerDln', 'assets/ui/storyPitch/Deadline.png');
+        this.load.image('progressBar', 'assets/ui/office/ProgressBar.png');
+        this.load.image('barFill', 'assets/ui/office/barFill.png');
     }
     
     create(){

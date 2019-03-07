@@ -33,14 +33,19 @@ class obj_reporter{
     
     pitch(story){
         this.storyPitch = story;
+        this.game.ui_storyPitch.curStory = this.storyPitch;
         this.needsNotify = true;
         this.game.notifications.addNotif(this);
     }
     
     takeOnStory(){
+        console.log("HALP");
         if(!this.storyQueue.isQueueFull(this.storyPitch)){
            this.storyQueue.addStory(this.storyPitch);
+            this.storyPitch.progress = new struct_storyProgress(this.game, this.xLocation, this.yLocation, 0, 100, 'progressBar','barFill',39,157);
+            this.storyPitch.progress.spawn();
         }
+        this.needsNotify = false;
     }
     
     forceOnStory(story){
@@ -53,5 +58,9 @@ class obj_reporter{
     forgetPitch(){
         this.storyPitch = null;
         this.needsNotify = false;
+    }
+    
+    work(){
+        this.storyQueue.workStories();
     }
 }

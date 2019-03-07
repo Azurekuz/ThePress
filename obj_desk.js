@@ -47,10 +47,13 @@ class obj_desk{
     }
     
     updateDesk(){
-        if(this.workerActive){
+        /*if(this.workerActive){
             this.workingReporter.spawn();
         }else if(this.workingReporter.phaserObject != null || this.workingReporter.phaserObject != undefined){
             this.workingReporter.despawn();
+        }*/
+        if(this.workingReporter != null || this.workingReporter != undefined){
+            this.workingReporter.work();
         }
     }
 }

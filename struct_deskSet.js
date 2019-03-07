@@ -44,4 +44,10 @@ class struct_deskSet{
     removeDesk(){
         
     }
+    
+    update(){
+        for(var i = 0; i < this.deskArray.length; i += 1){
+            this.deskArray[i].updateDesk();
+        }
+    }
 }

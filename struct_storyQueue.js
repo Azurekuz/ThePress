@@ -24,12 +24,30 @@ class struct_storyQueue{
     
     removeStory(storyID){
         var tempArray = [];
-        for(var i = 0; i < this.queue.length; i += this.queue[i].size){
-            if(this.queue[i].storyID.valueOf != storyID){
+        for(var i = 0; i < this.queue.length; i += 1){
+            console.log(this.queue);
+            if(this.queue[i].description != storyID){
                tempArray.push(this.queue[i]);
+            }else{
+                delete this.queue[i]
             }
         }
         delete this.queue;
         this.queue = tempArray;
+    }
+    
+    workStories(){
+        for(var i = 0; i < this.queue.length; i += 1){
+            if(!this.queue[i].progress.isFinished){
+                this.queue[i].progress.iterateProgress(10);
+            }else{
+                this.queue[i].progress.despawn();
+                delete this.queue[i].progress;
+                this.removeStory(this.queue[i].description);
+                this.game.ui_budget.text = "Budget: " + this.game.budget.toString();
+                this.game.ui_credibility.text = "Credit: " + this.game.credit.toString();
+                console.log("DELETED")
+            }
+        }
     }
 }

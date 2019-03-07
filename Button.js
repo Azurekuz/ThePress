@@ -71,7 +71,9 @@ class Button{
             this.buttonParent.needsUpdate = true;
             console.log(this.isSelected)
         }else if(this.purposeID.substr(0,5) == "uicon"){ //UI confirm buttons, these are for affirming, denying, or cancelling popups/ui elements.
-            this.buttonParent.dismiss();
+            this.buttonParent.needsUpdate = true;
+            this.isSelected = !this.isSelected;
+            //this.buttonParent.dismiss();
         }
         
     }

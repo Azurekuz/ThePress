@@ -1,5 +1,5 @@
 class ui_storyPitch{
-    constructor(context, xLoc, yLoc, storyObj, reporterObj){
+    constructor(context, xLoc, yLoc, storyObj = null, reporterObj){
         this.game = context;
         this.xLocation = xLoc;
         this.yLocation = yLoc;
@@ -17,11 +17,11 @@ class ui_storyPitch{
         
         this.btn_Yes = new Button(this.game, 1480, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.btn_No = new Button(this.game, 1720, 214, 195, 141, null, 'ynBtn', null, 'uicon');
-        this.btn_Yes.buttonParent = this;
-        this.btn_No.buttonParent = this;
-        
         this.yesNoPrompt.push(this.btn_Yes);
         this.yesNoPrompt.push(this.btn_No);
+        for(var i = 0; i < this.yesNoPrompt.length; i += 1){
+            this.yesNoPrompt[i].buttonParent = this.yesNoPrompt;
+        }
         
         this.btn_srcA = new Button(this.game, 1601, 441, 432, 77, null, 'srcBtn', null, 'tggle');
         this.btn_srcB = new Button(this.game, 1601, 538, 432, 77, null, 'srcBtn', null, 'tggle');
@@ -90,14 +90,27 @@ class ui_storyPitch{
         this.headerRun.depth = 101;
         this.headerSrc.depth = 101;
         this.headerDln.depth = 101;
+        
+        if(this.curStory != null){
+           this.addText();
+        }
     }
     
     update(){
+        if(this.yesNoPrompt.needsUpdate){
+            console.log(this.yesNoPrompt[0]);
+           if(this.yesNoPrompt[0].isSelected){
+                this.curReporter.takeOnStory();
+                this.yesNoPrompt[0].isSelected = false;
+            }else{
+                this.yesNoPrompt[1].isSelected = false;
+            }
+            this.dismiss();
+            this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate;
+        }
         if(this.deadlineSet.needsUpdate){
-            console.log("Thank freakin' god, it works.");
            for(var i = 0; i < this.deadlineSet.length; i += 1){
                if(this.deadlineSet[i].isSelected && i != this.deadlineSet.curSelected){
-                   console.log("Unselected!")
                   this.deadlineSet[i].isSelected = false;
                    this.deadlineSet[i].phaserObject.setFrame(0);
                 }
@@ -114,6 +127,11 @@ class ui_storyPitch{
             this.sourceList.needsUpdate = !this.sourceList.needsUpdate;
         }
         
+    }
+    
+    addText(){
+        this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
+        this.pitchText.depth = 200;
     }
     
     dismiss(){
@@ -134,9 +152,8 @@ class ui_storyPitch{
         this.headerDln.destroy();
         this.uiBackground.destroy();
         this.uiBubble.destroy();
+        this.pitchText.destroy();
         this.game.uiPaused = false;
         this.game.notifications.removeNotif(this.curReporter);
-        
-        console.log(this.yesNoPrompt);
     }
 }
