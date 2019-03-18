@@ -1,41 +1,41 @@
 class obj_player{
     constructor(context, xLoc, yLoc, width, height, spriteID, speed = 250){
-        this.game = context;
+        this.game = context; //Phaser reference
         
-        this.xLocation = xLoc;
-        this.yLocation = yLoc;
-        this.width = width;
-        this.height = height;
-        this.spriteID = spriteID;
-        this.speed = speed;
+        this.xLocation = xLoc; //X location of the player
+        this.yLocation = yLoc; //Y location of the player
+        this.width = width; //Width of the player sprite
+        this.height = height; //Height of the player sprite
+        this.spriteID = spriteID; //The actual sprite or visuals of the player
+        this.speed = speed; //How fast does the player go?
         
-        this.phaserObject = null;
-        this.isInteracting = false;
+        this.phaserObject = null; //The actual Phaser sprite of the player
+        this.isInteracting = false; //Is the player interacting with something?
     }
     
-    setupControls(){
-        this.game.controls = this.game.input;
-        this.game.controls.upKey = this.game.input.keyboard.addKey(87); 
-        this.game.controls.downKey = this.game.input.keyboard.addKey(83);
-        this.game.controls.leftKey = this.game.input.keyboard.addKey(65);
-        this.game.controls.rightKey = this.game.input.keyboard.addKey(68);
-        this.game.controls.interactKey = this.game.input.keyboard.addKey(69);
+    setupControls(){ //Set up the player controls
+        this.game.controls = this.game.input; //Just a reference to Phaser input stuff
+        this.game.controls.upKey = this.game.input.keyboard.addKey(87);  //Up key (W)
+        this.game.controls.downKey = this.game.input.keyboard.addKey(83); //Down key (S)
+        this.game.controls.leftKey = this.game.input.keyboard.addKey(65); //Left key (A)
+        this.game.controls.rightKey = this.game.input.keyboard.addKey(68); //Right key (D)
+        this.game.controls.interactKey = this.game.input.keyboard.addKey(69); //E Key
     }
     
-    spawn(){
-        this.setupControls();
-        this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, this.spriteID);
-        this.phaserObject.setCollideWorldBounds(true);
-        this.phaserObject._objRef = this;
-        this.phaserObject.depth = 10;
+    spawn(){ //Spawn the player object
+        this.setupControls(); //Set up the controls first.
+        this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, this.spriteID); //Add the Phaser sprite
+        this.phaserObject.setCollideWorldBounds(true); //The player can collide with the edges of the screen
+        this.phaserObject._objRef = this; //The Phaser sprite has a reference to this object
+        this.phaserObject.depth = 10; //The depth of the object
     }
     
-    update(delta){
-        this.checkControls();
+    update(delta){ //The player update loop
+        this.checkControls(); //Check player controls
     }
     
-    checkControls(){
-        if(!this.game.uiPaused){
+    checkControls(){ //Function responsible for player movement
+        if(!this.game.uiPaused){ //If the game isn't paused then check for all relevant movement inputs, in other words check if the user wants the player to move around on screen.
             if(this.game.controls.upKey.isDown){
                 this.phaserObject.setVelocityY(-this.speed);
             }
@@ -56,18 +56,16 @@ class obj_player{
             }
             if(this.game.controls.interactKey.isDown && !this.isInteracting){
                 this.isInteracting = true;
-                //this.phaserObject.setFrame(1);
             }else if(!this.game.controls.interactKey.isDown && this.isInteracting){
                 this.isInteracting = false;
-                //this.phaserObject.setFrame(0);
             }
-        }else{
+        }else{ //Stop the player if all else fails
             this.phaserObject.setVelocityY(0);
             this.phaserObject.setVelocityX(0);
         }
     }
     
     interact(){
-        
+        //Something is supposed to go here, but what? I don't know (yet).
     }
 }

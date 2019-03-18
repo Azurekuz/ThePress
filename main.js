@@ -32,8 +32,8 @@ class sceneBoot extends Phaser.Scene{
     }
     
     create(){
-        this.isPaused = false;
-        this.uiPaused = false;
+        this.isPaused = false; //The variable used to pause the entire game.
+        this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.
@@ -42,11 +42,11 @@ class sceneBoot extends Phaser.Scene{
     }
 }
 
-var config = {
+var config = { //API Configuration for the Phaser game
     type: Phaser.AUTO,
-        width: 1920,
-        height: 1080,
-        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social],
+        width: 1920, //Window width
+        height: 1080, //Window height
+        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social], //All of the Phaser scenes
         physics: {
             default: 'arcade',
             arcade: {
@@ -54,8 +54,8 @@ var config = {
             },
         },
         transparent: false,
-        antialias: false,
-        scaleMode: Phaser.Scale.ScaleModes.FIT,
+        antialias: false, //Antialiasing/smoothing, I disabled it to avoid having things look blurry
+        scaleMode: Phaser.Scale.ScaleModes.FIT, //Method of scaling the screen size according to how big the window is.
 };
 
 var game = new Phaser.Game(config);

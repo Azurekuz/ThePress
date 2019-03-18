@@ -1,3 +1,4 @@
+//Currently a useless object, do not mind. Will most likely be cut.
 function GameMaterials(context){
     
 }

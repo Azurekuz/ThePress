@@ -22,32 +22,33 @@ class Button{
         this.phaserText = null;
     }
 
-    spawn(){
+    spawn(){ //The function that's called to make the button actually appear.
         if(this.phaserObjectExists()){ //Check to make sure spriteID was initialized.
             //Add the button sprite.
             this.phaserObject = this.game.add.sprite(this.xLocation, this.yLocation, this.spriteID);
         }
-        if(this.phaserTextExists() && this.textStyle != null){
+        if(this.phaserTextExists() && this.textStyle != null){ //If the Phaser sprite exists, then add text over the button according to the provided style.
            this.phaserText = this.game.add.text(this.xLocation, this.yLocation, this.buttonText, this.textStyle);
-            this.phaserText.setOrigin(0,0.5);
-        }else if(this.phaserTextExists()){
-            this.phaserText = this.game.add.text(this.xLocation, this.yLocation, this.buttonText);
-            this.phaserText.setOrigin(0,0.5);
+            this.phaserText.setOrigin(0,0.5); //Center the text.
+        }else if(this.phaserTextExists()){ //If only the text exists without any provided style
+            this.phaserText = this.game.add.text(this.xLocation, this.yLocation, this.buttonText); //Add the text
+            this.phaserText.setOrigin(0,0.5); //Center it
         }
         
-        this.phaserObject.setInteractive({useHandCursor: true})
+        /*This is what provides the interactability. Call different functions according to whether or not the user is hovering, clicking, or has their mouse off the button*/
+        this.phaserObject.setInteractive({useHandCursor: true}) 
             .on('pointerover', () => this.enterHoverState() )
             .on('pointerout', () => this.enterRestState() )
             .on('pointerdown', () => this.enterActiveState());
     }
     
-    enterHoverState(){
+    enterHoverState(){ //Called when the user is hovering over the button
         if(this.phaserObjectExists()){
            this.phaserObject.setFrame(1);
         }
     }
     
-    enterRestState(){
+    enterRestState(){ //Called when the user has their mouse off the button
         if(this.phaserObjectExists()){
             if(!this.isSelected){
                 this.phaserObject.setFrame(0);
@@ -57,7 +58,7 @@ class Button{
         }
     }
     
-    enterActiveState(){
+    enterActiveState(){ //Called when the button is clicked.
         if(this.phaserObjectExists()){
            this.phaserObject.setFrame(2);
         }
@@ -78,7 +79,7 @@ class Button{
         
     }
     
-    phaserObjectExists(){
+    phaserObjectExists(){ //Just a simple check to see if the Phaser sprite exists, without cluttering up the code
         if(this.spriteID != null){
            return true;
         }else{
@@ -86,7 +87,7 @@ class Button{
         }
     }
     
-    phaserTextExists(){
+    phaserTextExists(){ //Does the text exist? I should just made these all one function.
         if(this.buttonText != null){
            return true;
         }else{

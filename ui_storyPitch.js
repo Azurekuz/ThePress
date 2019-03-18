@@ -18,7 +18,9 @@ class ui_storyPitch{
         this.btn_Yes = new Button(this.game, 1480, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.btn_No = new Button(this.game, 1720, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.yesNoPrompt.push(this.btn_Yes);
+        this.yesNoPrompt[0].buttonValue = "Yes"
         this.yesNoPrompt.push(this.btn_No);
+        this.yesNoPrompt[1].buttonValue = "No"
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].buttonParent = this.yesNoPrompt;
         }
@@ -71,12 +73,15 @@ class ui_storyPitch{
         
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].spawn();
+            this.yesNoPrompt[i].phaserText = this.game.add.text(this.yesNoPrompt[i].xLocation, this.yesNoPrompt[i].yLocation, this.yesNoPrompt[i].buttonText, {fontFamily: "lores-9-wide", fontSize: 36});
+            this.yesNoPrompt[i].phaserText.depth = 103
             this.yesNoPrompt[i].phaserObject.depth = 101;
         }
         
         for(var i = 0; i < this.sourceList.length; i += 1){
             this.sourceList[i].spawn();
-            this.sourceList[i].phaserObject.depth = 101;
+            this.sourceList[i].phaserText = this.game.add.text();
+            this.sourceList[i].phaserObject.depth= 101;
         }
         
         for(var i = 0; i < this.deadlineSet.length; i += 1){
@@ -131,7 +136,7 @@ class ui_storyPitch{
     
     addText(){
         this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
-        this.pitchText.depth = 200;
+        this.pitchText.depth = 105;
     }
     
     dismiss(){

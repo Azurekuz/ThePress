@@ -1,28 +1,30 @@
-class obj_department{
+class obj_department{ //The department object
     constructor(context, xLoc, yLoc, width, height, depName, spriteID){
-        this.game = context;
+        this.game = context; //Phaser reference
         
-        this.xLocation = xLoc;
-        this.yLocation = yLoc;
-        this.width = width;
-        this.height = height;
-        this.depName = depName;
-        this.spriteID = spriteID;
+        this.xLocation = xLoc; //X location of the department
+        this.yLocation = yLoc; //Y location of the department
+        this.width = width; //Width of the department
+        this.height = height; //Height of the department
+        this.depName = depName; //Name of the department
+        this.spriteID = spriteID; //Department sprite
         
-        this.phaserObject = null;
-        this.depTextObj = null;
+        this.phaserObject = null; //Variable for the Phaser sprite
+        this.depTextObj = null; //Variable for the text layer
     }
     
     spawnDepartmentObject(){
-        this.phaserObject = this.game.physics.add.image(this.xLocation, this.yLocation, this.spriteID);
-        this.depTextObj = this.game.add.text(this.xLocation, this.yLocation, this.depName, {fontFamily: "Calibri", align: "center", color:"#000", fontStyle: "bold", fontSize: 32});
-        this.depTextObj.setOrigin(0.5);
-        this.phaserObject.body.immovable = true;
+        this.phaserObject = this.game.physics.add.image(this.xLocation, this.yLocation, this.spriteID); //Make the actual Phaser object.
+        this.depTextObj = this.game.add.text(this.xLocation, this.yLocation, this.depName, {fontFamily: "Calibri", align: "center", color:"#000", fontStyle: "bold", fontSize: 32}); //Make the text denoting the department
+        this.depTextObj.setOrigin(0.5); //Just something to center the text, I'm assuming it changes around the origin/anchor point of the text or object.
+        this.phaserObject.body.immovable = true; //Make sure the Phaser object can't be pushed around when the player or anything collides with it.
+        
+        /*This is to make sure the Phaser object/sprite has access to the object its embedded in. This is to make coding collision events easier when we need to get stuff from the object.*/
         this.phaserObject._objRef = this;
-        this.game.grp_departments.add(this.phaserObject);
+        this.game.grp_departments.add(this.phaserObject); //This Phaser object or sprite is a department, so add it to the Phaser group.
     }
     
     accessDepartment(){
-        console.log(this.depName + " has been accessed!");
+        console.log(this.depName + " has been accessed!"); //Just something to let me know this function works.
     }
 }
