@@ -21,9 +21,9 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.btn_Yes = new Button(this.game, 1480, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.btn_No = new Button(this.game, 1720, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.yesNoPrompt.push(this.btn_Yes);
-        this.yesNoPrompt[0].buttonValue = "Yes"
+        this.yesNoPrompt[0].buttonValue = "Y"
         this.yesNoPrompt.push(this.btn_No);
-        this.yesNoPrompt[1].buttonValue = "No"
+        this.yesNoPrompt[1].buttonValue = "N"
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].buttonParent = this.yesNoPrompt;
         }
@@ -79,8 +79,15 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].spawn();
-            this.yesNoPrompt[i].phaserText = this.game.add.text(this.yesNoPrompt[i].xLocation, this.yesNoPrompt[i].yLocation, this.yesNoPrompt[i].buttonText, {fontFamily: "lores-9-wide", fontSize: 36});
-            this.yesNoPrompt[i].phaserText.depth = 103
+            var moveItHere;
+            if(this.yesNoPrompt[i].buttonValue == "Y"){
+                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4) + 15;
+            }else{
+                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4)
+            }
+            this.yesNoPrompt[i].phaserText = this.game.add.text(moveItHere, this.yesNoPrompt[i].yLocation - (this.yesNoPrompt[i].height/4), this.yesNoPrompt[i].buttonValue, {fontFamily: "lores-9-wide, Calibri", fontSize: 96});
+            this.yesNoPrompt[i].phaserText.setOrigin(0, 0.25);
+            this.yesNoPrompt[i].phaserText.depth = 103;
             this.yesNoPrompt[i].phaserObject.depth = 101;
         }
         
@@ -141,21 +148,25 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     }
     
     addText(){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.
-        this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
+        //this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
+        this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide, Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
         this.pitchText.depth = 105;
     }
     
     dismiss(){ //Dismiss the UI and all of its elements using possible maximum destruction... ...at least I'd like to think so.
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].phaserObject.destroy();
+            this.yesNoPrompt[i].phaserText.destroy();
             delete this.yesNoPrompt[i];
         }
         for(var i = 0; i < this.sourceList.length; i += 1){
             this.sourceList[i].phaserObject.destroy();
+            //this.sourceList[i].phaserText.destroy();
             delete this.sourceList[i];
         }
         for(var i = 0; i < this.deadlineSet.length; i += 1){
             this.deadlineSet[i].phaserObject.destroy();
+            //this.deadlineSet[i].phaserText.destroy();
             delete this.deadlineSet[i];
         }
         this.headerRun.destroy();

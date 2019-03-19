@@ -39,7 +39,7 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
     workStories(){ //Basically the update loop for the storyQueue.
         for(var i = 0; i < this.queue.length; i += 1){ //Go through the queue
             if(!this.queue[i].progress.isFinished){ //If the current story ain't done.
-                this.queue[i].progress.iterateProgress(1); //Then make some progress.
+                this.queue[i].progress.iterateProgress(10); //Then make some progress.
             }else{ //Otherwise...
                 this.queue[i].progress.despawn(); //Make the progress bar despawn
                 delete this.queue[i].progress; //Delete the progress structure

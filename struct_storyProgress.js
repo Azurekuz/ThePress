@@ -20,7 +20,7 @@ class struct_storyProgress{
         this.barFill.depth = 100;*/
         this.barFill = this.game.add.graphics(); //So this is where I began experimenting with Phaser graphics and drawing. Oh boy.
         this.barFill.fillStyle(0xffc7c7, 0.9); //The color and opacity of the fill.
-        this.barFill.fillRect(this.xLocation - (this.width/2) + 5, this.yLocation - (this.height/2), this.width-7, 0); //Make a rectangle
+        this.barFill.fillRect(this.xLocation - (this.width/2) + 5, this.yLocation - (this.height/2), this.width-10, 0); //Make a rectangle
         this.barFill.depth = 100; //Set the rectangle's depth
         this.barFill.height = this.height * 0.5;
         this.phaserObject = this.game.add.image(this.xLocation, this.yLocation, 'progressBar'); //Add the bar outline
@@ -53,7 +53,7 @@ class struct_storyProgress{
     
     setPercent(percent){ //The functon in charge of setting the bar's visuals according to what percent full it is.
         this.barFill.clear();
-        this.barFill.fillRect(this.xLocation - (this.width/2) + 5, (this.yLocation - (this.height/2)), this.width-7, (this.height - 5)*percent);
+        this.barFill.fillRect(this.xLocation - (this.width/2) + 5, (this.yLocation - (this.height/2)), this.width-10, (this.height - 5)*percent);
     }
     
     finishStory(){ //So, the story is done. Here is a test function making sure stuff happens when the story is done. This will be implemented differently.
