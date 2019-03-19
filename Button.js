@@ -1,4 +1,4 @@
-class Button{
+class Button{ //I need to make a despawn() function, damn it!
     /* This is a custom button class that is hoverable and clickable. It is also organized with the 
     intention of allowing different kinds of functionalities depending on what it needs to be used for.*/
     constructor(phaserGame, xLoc, yLoc, btnWidth, btnHeight, text = null, spriteID = null, textStyle = null, purposeID){
