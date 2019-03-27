@@ -40,7 +40,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.sourceList.needsUpdate = false;
         
         for(var i = 0; i < this.sourceList.length; i += 1){
-            this.sourceList[i].buttonValue = "Source " + (i + 1).toString();
+            this.sourceList[i].buttonValue = null;
             this.sourceList[i].buttonParent = this.sourceList;
             this.sourceList[i].listIndex = i;
         }
@@ -57,7 +57,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.deadlineSet.needsUpdate = false;
         
         for(var i = 0; i < this.deadlineSet.length; i += 1){
-            this.deadlineSet[i].buttonValue = (i + 1);
+            this.deadlineSet[i].buttonValue = null;
             this.deadlineSet[i].buttonParent = this.deadlineSet;
             this.deadlineSet[i].listIndex = i;
         }
@@ -76,6 +76,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.uiBackground.depth = 100;
         this.uiBubble = this.game.add.image(673, 554, 'textBubble');
         this.uiBubble.depth = 101;
+        this.curStory = storyObj;
         
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].spawn();
@@ -83,7 +84,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             if(this.yesNoPrompt[i].buttonValue == "Y"){
                 moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4) + 15;
             }else{
-                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4)
+                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4);
             }
             this.yesNoPrompt[i].phaserText = this.game.add.text(moveItHere, this.yesNoPrompt[i].yLocation - (this.yesNoPrompt[i].height/4), this.yesNoPrompt[i].buttonValue, {fontFamily: "lores-9-wide, Calibri", fontSize: 96});
             this.yesNoPrompt[i].phaserText.setOrigin(0, 0.25);
@@ -92,14 +93,23 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         }
         
         for(var i = 0; i < this.sourceList.length; i += 1){
+            this.sourceList[i].buttonValue = this.curStory.sources[i];
             this.sourceList[i].spawn();
-            this.sourceList[i].phaserText = this.game.add.text();
+            
+            var fontSize = 36;
+            
+            this.sourceList[i].phaserText = this.game.add.text(this.sourceList[i].phaserObject.x, this.sourceList[i].phaserObject.y, this.sourceList[i].buttonValue, {fontFamily: "lores-9-wide, Calibri", fontSize: fontSize});
+            this.sourceList[i].phaserText.setOrigin(0.5, 0.5);
+            this.sourceList[i].phaserText.depth = 103;
             this.sourceList[i].phaserObject.depth= 101;
         }
         
-        for(var i = 0; i < this.deadlineSet.length; i += 1){
+        for(var i = 0; i < this.deadlineSet.length; i += 1){    
             this.deadlineSet[i].spawn();
             this.deadlineSet[i].phaserObject.depth = 101;
+            this.deadlineSet[i].phaserText = this.game.add.text(this.deadlineSet[i].phaserObject.x, this.deadlineSet[i].phaserObject.y, this.curStory.deadlines[i], {fontFamily: "lores-9-wide, Calibri", fontSize: 48});
+            this.deadlineSet[i].phaserText.depth = 103;
+            this.deadlineSet[i].phaserText.setOrigin(0.5, 0.5);
         }
         
         this.headerRun = this.game.add.image(1605, 116, 'headerRun');
@@ -149,7 +159,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     
     addText(){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.
         //this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
-        this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide, Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
+        this.pitchText = this.game.add.text(157, 200, this.curStory.description, {fontFamily: "lores-9-wide, Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
         this.pitchText.depth = 105;
     }
     
@@ -161,12 +171,12 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         }
         for(var i = 0; i < this.sourceList.length; i += 1){
             this.sourceList[i].phaserObject.destroy();
-            //this.sourceList[i].phaserText.destroy();
+            this.sourceList[i].phaserText.destroy();
             delete this.sourceList[i];
         }
         for(var i = 0; i < this.deadlineSet.length; i += 1){
             this.deadlineSet[i].phaserObject.destroy();
-            //this.deadlineSet[i].phaserText.destroy();
+            this.deadlineSet[i].phaserText.destroy();
             delete this.deadlineSet[i];
         }
         this.headerRun.destroy();

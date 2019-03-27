@@ -1,5 +1,5 @@
 class obj_player{
-    constructor(context, xLoc, yLoc, width, height, spriteID, speed = 250){
+    constructor(context, xLoc, yLoc, width, height, spriteID, speed = 1000){
         this.game = context; //Phaser reference
         
         this.xLocation = xLoc; //X location of the player

@@ -20,15 +20,16 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler.png', {frameWidth: 171, frameHeight: 101});
         this.load.spritesheet('welMat', 'assets/stage/newsRoom/Welcome1.png', {frameWidth: 151, frameHeight: 264});
         this.load.image('uiBack', 'assets/ui/storyPitch/ReporterUI_background.png');
-        this.load.image('textBubble', 'assets/ui/storyPitch/ReporterUI_Bubble.png');
-        this.load.spritesheet('ynBtn', 'assets/ui/storyPitch/Reporter_YesOrNo.png', {frameWidth: 195, frameHeight: 141});
-        this.load.spritesheet('dlBtn', 'assets/ui/storyPitch/Reporter_Deadline.png', {frameWidth: 137, frameHeight: 101});
-        this.load.spritesheet('srcBtn', 'assets/ui/storyPitch/Reporter_Source.png', {frameWidth: 432, frameHeight: 77});
+        this.load.image('textBubble', 'assets/ui/storyPitch/StoryPitchUI.png');
+        this.load.spritesheet('ynBtn', 'assets/ui/storyPitch/RunItButton_Sprite.png', {frameWidth: 194, frameHeight: 141});
+        this.load.spritesheet('dlBtn', 'assets/ui/storyPitch/DeadlineButton_Sprite.png', {frameWidth: 136.3, frameHeight: 101});
+        this.load.spritesheet('srcBtn', 'assets/ui/storyPitch/SourceButton_Sprite.png', {frameWidth: 433, frameHeight: 77});
         this.load.image('headerRun', 'assets/ui/storyPitch/RunIt.png');
         this.load.image('headerSrc','assets/ui/storyPitch/MainSource.png');
         this.load.image('headerDln', 'assets/ui/storyPitch/Deadline.png');
         this.load.image('progressBar', 'assets/ui/office/ProgressBar.png');
         this.load.image('barFill', 'assets/ui/office/barFill.png');
+        this.load.spritesheet('credBar', 'assets/ui/office/BarSolo.png', {frameWidth: 404, frameHeight: 54});
     }
     
     create(){

@@ -16,12 +16,11 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.notifications = new sys_notify(this); //This is the notification system/object.
         
         this.ui_storyPitch = new ui_storyPitch(this, 0, 0, null, null); //This is the Story Pitch UI object
-        this.budget = 100; //Just some arbitrary variables and numbers, are changed when the test story is complete.
-        this.credit = 15;
-        this.ui_budget = this.add.text(10, 10, "Budget: " + this.budget.toString(), {fontFamily: "Calibri", color: "#000000", fontSize: 48}); //Test text object, will be removed/replaced.
-        this.ui_credibility = this.add.text(10, 60, "Credit: " + this.credit.toString(),{fontFamily: "Calibri", color: "#000000", fontSize: 48});
-        this.ui_budget.depth = 52; //The .depth variable in Phaser is used to layer and have things go behind or in front one another.
-        this.ui_credibility.depth = 52;
+        //Just some arbitrary variables and numbers, are changed when the test story is complete.
+        this.ui_budget = new ui_budget(this, 10, 10, 5000, 83); //Budget UI
+        this.ui_budget.spawn(); 
+        this.ui_credibility = new ui_credibility(this, 10, 80, 50, 'credBar');
+        this.ui_credibility.spawn();
         
         this.add.image(960, 540, 'roomFloor'); //The news room floor.
         this.office = new obj_department(this, 198, 315, 349, 384, " ", 'office'); //The office department object.
@@ -44,7 +43,8 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.officeDesks.deskArray[0].hire(this.testReporter); //Hire and place the reporter at the specified desk.
         this.officeDesks.spawn(); //Spawn all of the desks in the set.
         this.officeDesks.deskArray[0].setToWork(); //Have the worker in the first desk be active and working.
-        this.testStory = new struct_story(this, "Hey Boss! So the mayor is announcing a new bikeshare program. There will be docks for the bikes in the downtown area and in midtown. They cost $2 per hour to ride, and the program is thinking of letting metro cards activate them as well. - Laura", ["Mayor", 'Bike Manufacturers', "Local eWatch Group"], [1,3,5], 1); //A test story object, we'll probably need to figure out some JSON to store all of the possible story pitches.
+        this.testSources;
+        this.testStory = new struct_story(this, "Hey Boss! So the mayor is announcing a new bikeshare program. There will be docks for the bikes in the downtown area and in midtown. They cost $2 per hour to ride, and the program is thinking of letting metro cards activate them as well. - Laura", ["Mayor", 'Bike Makers', "Enviro. Group"], [1,3,5], 1); //A test story object, we'll probably need to figure out some JSON to store all of the possible story pitches.
         this.officeDesks.deskArray[0].workingReporter.pitch(this.testStory); //Have the worker pitch the story.
         
         //These are all physics stuff to make sure the player collides with the departments, cooler, and/or desks.
@@ -62,6 +62,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
             if(this.ui_storyPitch.isActive){ //Are we in the middle of handling a story pitch?
                this.ui_storyPitch.update(); //If so, update the story pitch UI
             }
+            this.ui_budget.update();
             if((this.time.now - this.tick) > 1000){ //This is what's in charge of time passing second by second
                 this.officeDesks.update(); //Update the story every second.
                 this.tick = this.time.now; //Reset the tick tracker in preperation for the next passing second.
