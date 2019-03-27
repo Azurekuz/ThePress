@@ -53,6 +53,7 @@ class struct_storyProgress{
     
     setPercent(percent){ //The functon in charge of setting the bar's visuals according to what percent full it is.
         this.barFill.clear();
+        this.barFill.fillStyle(0xDE3C4B, 0.9);
         this.barFill.fillRect(this.xLocation - (this.width/2) + 5, (this.yLocation + ((this.height/2) - (this.height)*percent)), this.width-10, (this.height - 5)*percent);
     }
     

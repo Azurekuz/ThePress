@@ -15,15 +15,17 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.grp_workers = this.add.group();  //The Phaser group for workers, although we probably aren't going to be using this.
         this.notifications = new sys_notify(this); //This is the notification system/object.
         
+        this.ui_dayCounter = new ui_dayCount(this, 10, 10, 1);
+        this.ui_dayCounter.spawn();
         this.ui_storyPitch = new ui_storyPitch(this, 0, 0, null, null); //This is the Story Pitch UI object
         //Just some arbitrary variables and numbers, are changed when the test story is complete.
-        this.ui_budget = new ui_budget(this, 10, 10, 5000, 83); //Budget UI
+        this.ui_budget = new ui_budget(this, 30, 50, 5000, 83); //Budget UI
         this.ui_budget.spawn(); 
-        this.ui_credibility = new ui_credibility(this, 10, 80, 50, 'credBar', 404, 54);
+        this.ui_credibility = new ui_credibility(this, 30, 120, 50, 'credBar', 404, 54);
         this.ui_credibility.spawn();
         
         this.add.image(960, 540, 'roomFloor'); //The news room floor.
-        this.office = new obj_department(this, 198, 315, 349, 384, " ", 'office'); //The office department object.
+        this.office = new obj_department(this, 198, 475, 349, 384, " ", 'office'); //The office department object.
         this.ads = new obj_department(this, 281, 945, 606, 330, " ", 'adsRoom'); //The Ad Sales department object
         this.waterCooler = new obj_department(this, 1160, 50, 171, 101, " ", 'cooler'); //Water cooler object
         this.welMat = this.add.sprite(1855, 152, 'welMat'); //The welcome mat object
