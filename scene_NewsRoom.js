@@ -19,7 +19,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         //Just some arbitrary variables and numbers, are changed when the test story is complete.
         this.ui_budget = new ui_budget(this, 10, 10, 5000, 83); //Budget UI
         this.ui_budget.spawn(); 
-        this.ui_credibility = new ui_credibility(this, 10, 80, 50, 'credBar');
+        this.ui_credibility = new ui_credibility(this, 10, 80, 50, 'credBar', 404, 54);
         this.ui_credibility.spawn();
         
         this.add.image(960, 540, 'roomFloor'); //The news room floor.
