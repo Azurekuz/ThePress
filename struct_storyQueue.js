@@ -45,9 +45,7 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
                 delete this.queue[i].progress; //Delete the progress structure
                 this.removeStory(this.queue[i].description); //Remove the story from the queue.
                 
-                //Just a test to change some variables.
-                this.game.ui_budget.text = "Budget: " + this.game.budget.toString();
-                this.game.ui_credibility.text = "Credit: " + this.game.credit.toString();
+                //Just a test to change some variables.;
                 console.log("DELETED")
             }
         }

@@ -11,7 +11,7 @@ class ui_budget{
     }
     
     spawn(){
-        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Budget: $" + this.curBudget.toString(), {fontFamily: "Calibri", color: "#000000", fontSize: 48});
+        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Budget: $" + this.curBudget.toString(), {fontFamily: "lores-9-narrow, Calibri, Arial, Times New Roman", color: "#000000", fontSize: 36});
         this.phaserText.depth = 52;
         console.log(this.phaserText);
     }

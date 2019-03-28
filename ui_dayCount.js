@@ -9,7 +9,7 @@ class ui_dayCount{
     }
     
     spawn(){
-        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Day " + this.curDay.toString(), {fontFamily: "Calibri", color: "#000000", fontSize: 48});
+        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Day " + this.curDay.toString(), {fontFamily: "lores-9-narrow, Calibri, Arial, Times New Roman", color: "#000000", fontSize: 48});
         this.phaserText.depth = 52;
     }
     

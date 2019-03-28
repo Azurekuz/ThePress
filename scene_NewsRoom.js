@@ -54,6 +54,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.physics.add.collider(this.player.phaserObject, this.grp_desks, this.storyPitch);
         this.physics.add.collider(this.player.phaserObject, this.grp_workers);
         this.tick = 0;
+        this.tickDay = 0;
         //this.add.image(165, 167, 'office');
         //this.add.image(135, 585, 'adsRoom');
     }
@@ -63,6 +64,10 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
             this.player.update(); //Then update the player (mostly means allowing the user to control the player)
             if(this.ui_storyPitch.isActive){ //Are we in the middle of handling a story pitch?
                this.ui_storyPitch.update(); //If so, update the story pitch UI
+            }
+            if((this.time.now - this.tickDay) > 300000){ //This is what's in charge of time passing second by second
+                this.ui_dayCounter.adjustDay(1);
+                this.tickDay = this.time.now; //Reset the tick tracker in preperation for the next passing second.
             }
             this.ui_budget.update();
             if((this.time.now - this.tick) > 1000){ //This is what's in charge of time passing second by second

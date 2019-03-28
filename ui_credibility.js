@@ -13,7 +13,7 @@ class ui_credibility{
     }
     
     spawn(){
-        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Credibility: ", {fontFamily: "Calibri", color: "#000000", fontSize: 48});
+        this.phaserText = this.game.add.text(this.xLoc, this.yLoc, "Credibility: ", {fontFamily: "lores-9-narrow, Calibri, Arial, Times New Roman", color: "#000000", fontSize: 36});
         this.phaserText.setOrigin(0, 0.5);
         this.phaserText.depth = 52;
         
@@ -28,19 +28,36 @@ class ui_credibility{
     }
     
     despawn(){
+        if(this.phaserText != null){
+            this.phaserText.destroy();
+            this.phaserText = null;
+        }
         
+        if(this.phaserObject != null){
+            this.phaserObject.destroy();
+            this.phaserObject = null;
+        }
+        
+        if(this.phaserBarFill != null){
+            this.phaserBarFill.destroy();
+            this.phaserBarFill = null;
+        }
     }
     
     destroy(){
-        
+        this.despawn();
+        delete this;
     }
     
-    changeCred(){
-        
+    changeCred(amt){
+        this.curCred = this.clamp(this.curCred, amt, 0, 100);
+        this.update();
     }
     
     update(){
+        this.phaserBarFill.clear();
         this.phaserBarFill.fillStyle(0x81554D, 0.9);
+        this.phaserBarFill.fillRect((this.xLoc + (232)), this.yLoc- (this.barHeight/2), ((this.curCred/100) * (this.barWidth)), this.barHeight);
     }
     
     /* This function will maintain a given number between a certain range.*/
