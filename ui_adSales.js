@@ -24,6 +24,7 @@ class ui_adSales{
     
     popUp(adObj){
         this.uiBackground = this.game.add.image(960, 540, 'adBack');
+        this.game.uiPaused = true;
         this.acceptHeader = this.game.add.image(316,225, 'acceptHeader');
         this.acceptHeader.depth = 101;
         this.uiBackground.depth = 100;
@@ -32,18 +33,44 @@ class ui_adSales{
         this.curAdSale = adObj;
         
         for(var i = 0; i < 2; i += 1){
+            var moveItHere;
+            if(this.yesNoPrompt[i].buttonValue == "Y"){
+                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4) + 15;
+            }else{
+                moveItHere = this.yesNoPrompt[i].xLocation - (this.yesNoPrompt[i].width/4);
+            }
             this.yesNoPrompt[i].spawn();
             this.yesNoPrompt[i].phaserObject.depth = 101;
+            this.yesNoPrompt[i].phaserText = this.game.add.text(moveItHere, this.yesNoPrompt[i].yLocation - (this.yesNoPrompt[i].height/4), this.yesNoPrompt[i].buttonValue, {fontFamily: "lores-9-wide, Calibri", fontSize: 96});
+            this.yesNoPrompt[i].phaserText.setOrigin(0, 0.25);
+            this.yesNoPrompt[i].phaserText.depth = 103;
         }
         
         this.isActive = true;
     }
     
     update(){
-        
+        if(this.yesNoPrompt.needsUpdate){
+           if(this.yesNoPrompt[0].isSelected){
+                this.yesNoPrompt[0].isSelected = false;
+            }else if(this.yesNoPrompt[1].isSelected){
+                this.yesNoPrompt[1].isSelected = false;
+            }
+            this.dismiss(); //Dismiss the UI
+            this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate; //We no longer need updating.
+        }
     }
     
     dismiss(){
-        
+        this.game.uiPaused = false;
+        this.isActive = false;
+        for(var i = 0; i < this.yesNoPrompt.length; i += 1){
+            this.yesNoPrompt[i].phaserObject.destroy();
+            this.yesNoPrompt[i].phaserText.destroy();
+            delete this.yesNoPrompt[i];
+        }
+        this.uiBackground.destroy();
+        this.uiBubble.destroy();
+        this.acceptHeader.destroy();
     }
 }

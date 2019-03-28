@@ -159,7 +159,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     
     addText(){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.
         //this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
-        this.pitchText = this.game.add.text(157, 200, this.curStory.description, {fontFamily: "lores-9-wide, Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
+        this.pitchText = this.game.add.text(157, 200, this.curStory.description, {fontFamily: "lores-9-wide, neusa-next-std, Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
         this.pitchText.depth = 105;
     }
     

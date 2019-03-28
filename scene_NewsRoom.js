@@ -66,6 +66,9 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
             if(this.ui_storyPitch.isActive){ //Are we in the middle of handling a story pitch?
                this.ui_storyPitch.update(); //If so, update the story pitch UI
             }
+            if(this.ui_adSales.isActive){
+               this.ui_adSales.update();
+            }
             if((this.time.now - this.tickDay) > 300000){ //This is what's in charge of time passing second by second
                 this.ui_dayCounter.adjustDay(1);
                 this.tickDay = this.time.now; //Reset the tick tracker in preperation for the next passing second.
