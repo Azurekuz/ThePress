@@ -17,13 +17,13 @@ class ui_credibility{
         this.phaserText.setOrigin(0, 0.5);
         this.phaserText.depth = 52;
         
-        this.phaserObject = this.game.add.sprite(this.xLoc  + 424, this.yLoc, this.spriteID);
+        this.phaserObject = this.game.add.sprite(this.xLoc  + 424, this.yLoc + 15, this.spriteID);
         this.phaserObject.depth = 52;
         
         this.phaserBarFill = this.game.add.graphics();
         this.phaserBarFill.depth = 51;
         this.phaserBarFill.fillStyle(0x81554D, 0.9); 
-        this.phaserBarFill.fillRect((this.xLoc + (232)), this.yLoc- (this.barHeight/2), ((this.curCred/100) * (this.barWidth)), this.barHeight);
+        this.phaserBarFill.fillRect((this.xLoc + (232)), (this.yLoc + 15)- (this.barHeight/2), ((this.curCred/100) * (this.barWidth)), this.barHeight);
         console.log(this.phaserBarFill);
     }
     
