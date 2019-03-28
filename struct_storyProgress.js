@@ -21,10 +21,10 @@ class struct_storyProgress{
         this.barFill = this.game.add.graphics(); //So this is where I began experimenting with Phaser graphics and drawing. Oh boy.
         this.barFill.fillStyle(0xDE3C4B, 0.9); //The color and opacity of the fill.
         this.barFill.fillRect(this.xLocation - (this.width/2), this.yLocation + (this.height/2), this.width-10, 0); //Make a rectangle
-        this.barFill.depth = 100; //Set the rectangle's depth
+        this.barFill.depth = 50; //Set the rectangle's depth
         this.barFill.height = this.height * 0.0;
         this.phaserObject = this.game.add.image(this.xLocation, this.yLocation, 'progressBar'); //Add the bar outline
-        this.phaserObject.depth = 101; //make sure the bar outline is above the bar fill.
+        this.phaserObject.depth = 51; //make sure the bar outline is above the bar fill.
     }
     
     despawn(){ //Remove the progress bar.
