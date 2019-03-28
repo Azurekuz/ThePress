@@ -30,6 +30,10 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('progressBar', 'assets/ui/office/ProgressBar.png');
         this.load.image('barFill', 'assets/ui/office/barFill.png');
         this.load.spritesheet('credBar', 'assets/ui/office/BarSolo.png', {frameWidth: 404, frameHeight: 54});
+        this.load.spritesheet('adAccept', 'assets/ui/adSales/AdAcceptButton_Sprite.png', {frameWidth: 966, frameHeight:233});
+        this.load.image('adBubble', 'assets/ui/adSales/AdvertiserBubble.png');
+        this.load.image('acceptHeader', 'assets/ui/adSales/Accept.png');
+        this.load.image('adBack', 'assets/ui/adSales/adBackground.png');
     }
     
     create(){

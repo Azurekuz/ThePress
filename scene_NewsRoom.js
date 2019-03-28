@@ -18,6 +18,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.ui_dayCounter = new ui_dayCount(this, 10, 10, 1);
         this.ui_dayCounter.spawn();
         this.ui_storyPitch = new ui_storyPitch(this, 0, 0, null, null); //This is the Story Pitch UI object
+        this.ui_adSales = new ui_adSales(this, 0, 0, null);
         //Just some arbitrary variables and numbers, are changed when the test story is complete.
         this.ui_budget = new ui_budget(this, 30, 50, 5000, 83); //Budget UI
         this.ui_budget.spawn(); 
@@ -25,8 +26,8 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.ui_credibility.spawn();
         
         this.add.image(960, 540, 'roomFloor'); //The news room floor.
-        this.office = new obj_department(this, 198, 475, 349, 384, " ", 'office'); //The office department object.
-        this.ads = new obj_department(this, 281, 945, 606, 330, " ", 'adsRoom'); //The Ad Sales department object
+        this.office = new obj_department(this, 198, 475, 349, 384, "office", 'office'); //The office department object.
+        this.ads = new obj_department(this, 281, 945, 606, 330, "ads", 'adsRoom'); //The Ad Sales department object
         this.waterCooler = new obj_department(this, 1160, 50, 171, 101, " ", 'cooler'); //Water cooler object
         this.welMat = this.add.sprite(1855, 152, 'welMat'); //The welcome mat object
         this.office.spawnDepartmentObject(); //Calling the function to spawn/make said object appear
