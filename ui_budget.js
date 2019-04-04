@@ -54,6 +54,11 @@ class ui_budget{
         this.needsUpdate = true;
     }
     
+    nextDay(){
+        this.curBudget = (this.curBudget + this.income) - this.curRent;
+        this.updateUI();
+    }
+    
     updateUI(){
         this.phaserText.text = "Budget: $" +  this.curBudget.toString();
     }

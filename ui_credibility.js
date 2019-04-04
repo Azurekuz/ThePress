@@ -7,6 +7,8 @@ class ui_credibility{
         this.barHeight = bHeight;
         this.curCred = initCred;
         this.spriteID = spriteID;
+        
+        this.isActive = false;
         this.phaserText = null;
         this.phaserObject = null;
         this.phaserBarFill = null;
@@ -51,13 +53,16 @@ class ui_credibility{
     
     changeCred(amt){
         this.curCred = this.clamp(this.curCred, amt, 0, 100);
-        this.update();
+        if(this.isActive){
+            this.update();
+        }
     }
     
     update(){
         this.phaserBarFill.clear();
         this.phaserBarFill.fillStyle(0x81554D, 0.9);
         this.phaserBarFill.fillRect((this.xLoc + (232)), (this.yLoc + 15)- (this.barHeight/2), ((this.curCred/100) * (this.barWidth)), this.barHeight);
+        //this.
     }
     
     /* This function will maintain a given number between a certain range.*/

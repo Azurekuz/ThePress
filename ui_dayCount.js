@@ -25,4 +25,9 @@ class ui_dayCount{
         this.curDay = this.curDay + amt;
         this.updateText();
     }
+    
+    nextDay(){
+        this.adjustDay(1);
+        this.game.ui_budget.nextDay();
+    }
 }

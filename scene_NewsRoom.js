@@ -22,8 +22,8 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         //Just some arbitrary variables and numbers, are changed when the test story is complete.
         this.ui_budget = new ui_budget(this, 30, 60, 5000, 83); //Budget UI
         this.ui_budget.spawn(); 
-        this.ui_credibility = new ui_credibility(this, 30, 120, 50, 'credBar', 404, 54);
-        this.ui_credibility.spawn();
+        this.ui_viewers = new ui_viewers(this, 30, 100, 0);
+        this.ui_viewers.spawn();
         
         this.add.image(960, 540, 'roomFloor'); //The news room floor.
         this.office = new obj_department(this, 198, 475, 349, 384, "office", 'office'); //The office department object.
@@ -70,11 +70,14 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
                this.ui_adSales.update();
             }
             if((this.time.now - this.tickDay) > 300000){ //This is what's in charge of time passing second by second
-                this.ui_dayCounter.adjustDay(1);
+                this.ui_dayCounter.nextDay();
                 this.tickDay = this.time.now; //Reset the tick tracker in preperation for the next passing second.
             }
             this.ui_budget.update();
             if((this.time.now - this.tick) > 1000){ //This is what's in charge of time passing second by second
+                if(this.ui_viewers.isActive){
+                    this.ui_viewers.update();
+                }
                 this.officeDesks.update(); //Update the story every second.
                 this.tick = this.time.now; //Reset the tick tracker in preperation for the next passing second.
             }
