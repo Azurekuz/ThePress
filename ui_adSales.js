@@ -12,14 +12,6 @@ class ui_adSales{
         this.uiBubble = null;
         this.pitchText = null;
         
-        this.yesNoPrompt = [];
-        this.yesNoPrompt.push(new Button(this.game, 301, 392, 195, 141, null, 'ynBtn', null, 'uicon'));
-        this.yesNoPrompt.push(new Button(this.game, 301, 658, 195, 141, null, 'ynBtn', null, 'uicon'));   
-        this.yesNoPrompt[0].buttonValue = "Y"
-        this.yesNoPrompt[1].buttonValue = "N"
-        for(var i = 0; i < this.yesNoPrompt.length; i += 1){
-            this.yesNoPrompt[i].buttonParent = this.yesNoPrompt;
-        }
     }
     
     popUp(adObj){
@@ -31,6 +23,15 @@ class ui_adSales{
         this.uiBubble = this.game.add.image(1248, 569, 'adBubble');
         this.uiBubble.depth = 101;
         this.curAdSale = adObj;
+        
+        this.yesNoPrompt = [];
+        this.yesNoPrompt.push(new Button(this.game, 301, 392, 195, 141, null, 'ynBtn', null, 'uicon'));
+        this.yesNoPrompt.push(new Button(this.game, 301, 658, 195, 141, null, 'ynBtn', null, 'uicon'));   
+        this.yesNoPrompt[0].buttonValue = "Y"
+        this.yesNoPrompt[1].buttonValue = "N"
+        for(var i = 0; i < this.yesNoPrompt.length; i += 1){
+            this.yesNoPrompt[i].buttonParent = this.yesNoPrompt;
+        }
         
         for(var i = 0; i < 2; i += 1){
             var moveItHere;
@@ -46,6 +47,9 @@ class ui_adSales{
             this.yesNoPrompt[i].phaserText.depth = 103;
         }
         
+        console.log(this.curAdSale.description);
+        this.pitchText = this.game.add.text(733, 200, this.curAdSale.description, {fontFamily: "lores-9-wide, neusa-next-std Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
+        this.pitchText.depth = 105;
         this.isActive = true;
     }
     
@@ -72,5 +76,6 @@ class ui_adSales{
         this.uiBackground.destroy();
         this.uiBubble.destroy();
         this.acceptHeader.destroy();
+        this.pitchText.destroy();
     }
 }

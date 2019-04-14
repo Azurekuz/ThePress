@@ -10,6 +10,13 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     create(){
         console.log("Successfully entered the News Room Scene!"); 
         
+        //var dataReader = JSON.parse(this.pitchData);
+        
+        //console.log(dataReader);
+        
+        this.storyCollection = new struct_pitchList();
+        this.adCollection = new struct_salesList(); 
+        
         this.grp_departments = this.add.group(); //This is the Phaser group for sprites representing offices and departments like the Office or Ad Sales
         this.grp_desks = this.add.group(); //This is the Phaser group for news desk sprites
         this.grp_workers = this.add.group();  //The Phaser group for workers, although we probably aren't going to be using this.
@@ -48,7 +55,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.officeDesks.deskArray[0].setToWork(); //Have the worker in the first desk be active and working.
         this.testSources;
         this.testStory = new struct_story(this, "Hey Boss! So the mayor is announcing a new bikeshare program. There will be docks for the bikes in the downtown area and in midtown. They cost $2 per hour to ride, and the program is thinking of letting metro cards activate them as well. - Laura", ["Mayor", 'Bike Makers', "Enviro. Group"], [1,3,5], 1); //A test story object, we'll probably need to figure out some JSON to store all of the possible story pitches.
-        this.officeDesks.deskArray[0].workingReporter.pitch(this.testStory); //Have the worker pitch the story.
+        this.officeDesks.deskArray[0].workingReporter.pitch(this.storyCollection.pitchArray[0]); //Have the worker pitch the story.
         
         //These are all physics stuff to make sure the player collides with the departments, cooler, and/or desks.
         this.physics.add.collider(this.player.phaserObject, this.grp_departments, this.interactWith);
@@ -85,13 +92,14 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     }
     
     interactWith(player, department){ //A function that's called when the player collides or walks into a department.
-        if(player._objRef.game.controls.interactKey.isDown){
-           department._objRef.accessDepartment();
+        console.log(department._objRef.depName);
+        if(department._objRef.depName == "ads" && !player._objRef.game.ui_adSales.isActive){
+           department._objRef.accessDepartment(player._objRef.game.adCollection.salesArray[0]);
         }
     }
     
     storyPitch(player, desk){ //The function that's called when a player walks into a desk with a story pitch.
-        if(player._objRef.isInteracting && (desk.objRef.workingReporter)){
+        if(!player._objRef.game.ui_storyPitch.isActive && (desk.objRef.workingReporter)){
            if(desk.objRef.workingReporter.needsNotify){
                 player._objRef.game.ui_storyPitch.popUp(desk.objRef.workingReporter, desk.objRef.workingReporter.storyPitch);
                 player._objRef.game.ui_storyPitch.isActive = true;

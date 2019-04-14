@@ -1,0 +1,14 @@
+Ad Sales 1 [offer when newspaper is at 50 viewers]
+
+King Chicken is a local comfort food restaurant located in the heart of the downtown area. 
+They were established two years ago, and their customers have been growing in number 
+consistently over the last few months.
+
+They are offering:
+ // $(10*viewer) per month
+$500 / month
+// budget - Daily: $16.66
+
+Issues they are invested in:
+Health
+Local Business
