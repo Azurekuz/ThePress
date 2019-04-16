@@ -34,16 +34,22 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('adBubble', 'assets/ui/adSales/AdvertiserBubble.png');
         this.load.image('acceptHeader', 'assets/ui/adSales/Accept.png');
         this.load.image('adBack', 'assets/ui/adSales/adBackground.png');
+        this.load.image('titleBack', 'assets/ui/mainMenu/PressHomeBlank-06.png');
+        this.load.spritesheet('titlePlayBtn', 'assets/ui/mainMenu/titlePlay.png', {frameWidth: 562, frameHeight:114});
     }
     
     create(){
         this.isPaused = false; //The variable used to pause the entire game.
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
-        const testBackground = this.add.image(960, 540, "testScreen"); //Title background
+        const titleBack = this.add.image(960, 540, "titleBack"); //Title background
+        this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_NewsRoom');
+        this.playButton.spawn();
+        
+        /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.
         this.playButton = new Button(this, 960, 810, 568, 54, null, "menuBtn", null, 'opscn_scene_NewsRoom');
-        this.playButton.spawn();
+        this.playButton.spawn();*/
     }
 }
 
