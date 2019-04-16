@@ -29,6 +29,8 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('headerDln', 'assets/ui/storyPitch/Deadline.png');
         this.load.image('progressBar', 'assets/ui/office/ProgressBar.png');
         this.load.image('barFill', 'assets/ui/office/barFill.png');
+        this.load.image('aboutScreen','assets/ui/mainMenu/pressAboutScreen.png');
+        this.load.image('howScreen', 'assets/ui/mainMenu/pressHowScreen.png');
         this.load.spritesheet('credBar', 'assets/ui/office/BarSolo.png', {frameWidth: 404, frameHeight: 54});
         this.load.spritesheet('adAccept', 'assets/ui/adSales/AdAcceptButton_Sprite.png', {frameWidth: 322, frameHeight:233});
         this.load.image('adBubble', 'assets/ui/adSales/AdvertiserBubble.png');
@@ -36,6 +38,10 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('adBack', 'assets/ui/adSales/adBackground.png');
         this.load.image('titleBack', 'assets/ui/mainMenu/PressHomeBlank-06.png');
         this.load.spritesheet('titlePlayBtn', 'assets/ui/mainMenu/titlePlay.png', {frameWidth: 562, frameHeight:114});
+        this.load.spritesheet('titleHowBtn', 'assets/ui/mainMenu/titleHow.png', {frameWidth: 422, frameHeight:88});
+        this.load.spritesheet('titleAboutBtn', 'assets/ui/mainMenu/titleAbout.png', {frameWidth: 422, frameHeight:88});
+        this.load.spritesheet('xBtn', 'assets/ui/mainMenu/xBtn.png', {frameWidth: 65, frameHeight:65});
+        this.load.spritesheet('guideBtn','assets/ui/mainMenu/JournoGuideButton.png', {frameWidth:405, frameHeight:113} );
     }
     
     create(){
@@ -43,8 +49,12 @@ class sceneBoot extends Phaser.Scene{
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const titleBack = this.add.image(960, 540, "titleBack"); //Title background
         this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_NewsRoom');
-        this.playButton.spawn();
+        this.helpButton = new Button(this, 1200, 920, 422, 88, null, "titleHowBtn", null, 'opscn_scene_How');
+        this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
         
+        this.playButton.spawn();
+        this.helpButton.spawn();
+        this.aboutButton.spawn();
         /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.
@@ -57,7 +67,7 @@ var config = { //API Configuration for the Phaser game
     type: Phaser.AUTO,
         width: 1920, //Window width
         height: 1080, //Window height
-        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social], //All of the Phaser scenes
+        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social, scene_About, scene_How], //All of the Phaser scenes
         physics: {
             default: 'arcade',
             arcade: {
