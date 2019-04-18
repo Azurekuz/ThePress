@@ -12,11 +12,12 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('adsRoom', 'assets/stage/newsRoom/AdSales.png');
         this.load.image('nd_Glenn', 'assets/stage/newsRoom/Glenn.png');
         this.load.image('nd_Laura', 'assets/stage/newsRoom/Laura.png');
+        this.load.image('nd_Desk', 'assets/stage/newsRoom/Desk.png');
         this.load.image('office', 'assets/stage/newsRoom/Office.png');
         this.load.image('reporter', 'assets/prototype/reporter.png');
         this.load.image('roomFloor', 'assets/stage/newsRoom/roomFloor.png');
         this.load.image('storyUIBack', 'assets/prototype/storyUI.png');
-        this.load.spritesheet('notif', 'assets/sprites/SpeechBubbleFull.png', {frameWidth: 361, frameHeight: 230});
+        this.load.spritesheet('notif', 'assets/sprites/SpeechBubbleFull.png', {frameWidth: 251, frameHeight: 160});
         this.load.spritesheet('cooler', 'assets/stage/newsRoom/WaterCooler.png', {frameWidth: 171, frameHeight: 101});
         this.load.spritesheet('welMat', 'assets/stage/newsRoom/Welcome1.png', {frameWidth: 151, frameHeight: 264});
         this.load.image('uiBack', 'assets/ui/storyPitch/ReporterUI_background.png');

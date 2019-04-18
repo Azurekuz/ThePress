@@ -127,14 +127,20 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     update(){ //The UI's update loop
         if(this.yesNoPrompt.needsUpdate){ //Hey do we need to update because of the Y/N buttons being clicked?
             console.log(this.yesNoPrompt[0]);
-           if(this.yesNoPrompt[0].isSelected){
-                this.curReporter.takeOnStory();
-                this.yesNoPrompt[0].isSelected = false;
-            }else{
-                this.yesNoPrompt[1].isSelected = false;
-            }
-            this.dismiss(); //Dismiss the UI
-            this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate; //We no longer need updating.
+               if(this.yesNoPrompt[0].isSelected && this.isSelected()){
+                    this.curReporter.takeOnStory();
+                    this.yesNoPrompt[0].isSelected = false;
+                    this.dismiss(); //Dismiss the UI
+                    this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate; //We no longer need updating.
+                }else if(this.yesNoPrompt[0].isSelected){
+                    this.yesNoPrompt[0].isSelected = false;
+                    this.yesNoPrompt[0].phaserObject.enterRestState;
+                    this.yesNoPrompt.needsUpdate = false;
+                }else if(this.yesNoPrompt[1].isSelected){
+                    this.yesNoPrompt[1].isSelected = false;
+                    this.dismiss(); //Dismiss the UI
+                    this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate; //We no longer need updating.
+                }
         }
         if(this.deadlineSet.needsUpdate){
            for(var i = 0; i < this.deadlineSet.length; i += 1){ //Basically what makes the buttons visually toggle and not have multiple be selected at once.
@@ -155,6 +161,25 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             this.sourceList.needsUpdate = !this.sourceList.needsUpdate;
         }
         
+    }
+    
+    isSelected(){
+        var srcSelected = false;
+        var dlSelected = false;
+        for(var i = 0; i < 3; i += 1){
+            if(this.sourceList[i].isSelected){
+                srcSelected = true;
+            }
+            if(this.deadlineSet[i].isSelected){
+               dlSelected = true;
+            }
+        }
+        
+        if(srcSelected && dlSelected){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     addText(){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.

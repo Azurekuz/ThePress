@@ -8,7 +8,7 @@ class obj_notif{
     }
     
     spawn(){
-        this.phaserObject = this.game.add.sprite(this.owner.xLocation + (180 - (this.owner.width/2)), this.owner.yLocation - (115 - (this.owner.height/2)), this.spriteID); //Add the Phaser object
+        this.phaserObject = this.game.add.sprite(this.owner.xLocation + (125 - (this.owner.width/2)), this.owner.yLocation - (80 - (this.owner.height/2)), this.spriteID); //Add the Phaser object
         this.phaserObject.objRef = this; //Have the Phaser Object reference this object
         this.phaserObject.depth = 50; //Set the depth of the notification
     }

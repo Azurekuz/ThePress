@@ -43,14 +43,16 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.player = new obj_player(this, 1650, 250, 47, 47, 'playerSprite'); //Player object
         this.player.spawn(); //Spawn the player object
         
-        this.officeDesks = new struct_deskSet(this, 873, 1001, 3, 3, 310, 210, 295, 201, 'nd_Glenn', 3, 3); //Set of desks
+        this.officeDesks = new struct_deskSet(this, 873, 1001, 3, 3, 310, 210, 295, 201, null, 3, 3); //Set of desks
         //928
-        for(var i = 0; i < 2; i += 1){ //Add two desks to the desk set
+        for(var i = 0; i < 3; i += 1){ //Add two desks to the desk set
             this.officeDesks.addDesk();
         }
         
-        this.testReporter = new obj_reporter(this, 0, 0, 14, 28, "Albert", 'reporter'); //Just a test reporter object.
+        this.testReporter = new obj_reporter(this, 0, 0, 14, 28, "Glenn", 'reporter'); //Just a test reporter object.
+        //this.testReporterB = new obj_reporter(this, 0, 0, 14, 28, "Laura", 'reporter'); //Just a test reporter object.
         this.officeDesks.deskArray[0].hire(this.testReporter); //Hire and place the reporter at the specified desk.
+        //this.officeDesks.deskArray[1].hire(this.testReporterB);
         this.officeDesks.spawn(); //Spawn all of the desks in the set.
         this.officeDesks.deskArray[0].setToWork(); //Have the worker in the first desk be active and working.
         this.testSources;

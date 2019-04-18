@@ -19,7 +19,11 @@ class obj_desk{
     }
     
     spawn(){ //Actually spawn the desk object
-        this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, this.spriteID); //Add the phaser object
+        if(this.workingReporter != null || this.workingReporter != undefined){
+        this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, "nd_" + this.workingReporter.name); //Add the phaser object
+        }else{
+           this.phaserObject = this.game.physics.add.sprite(this.xLocation, this.yLocation, "nd_Desk"); 
+        }
         this.phaserObject.objRef = this; //Make sure the Phaser object can reference this object.
         this.phaserObject.body.immovable = true; //The Phaser object should not be able to move.
         if(this.workerActive && this.workingReporter != null){ //If the worker is active and also exists then run the update function once to display it properly.

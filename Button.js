@@ -75,6 +75,8 @@ class Button{ //I need to make a despawn() function, damn it!
             this.buttonParent.needsUpdate = true;
             this.isSelected = !this.isSelected;
             //this.buttonParent.dismiss();
+        }else if(this.purposeID.substr(0,5) == "opURL"){
+            window.open(this.purposeID.substr(6, this.purposeID.length), "_blank");
         }
         
     }
