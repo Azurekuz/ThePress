@@ -9,6 +9,8 @@ class obj_department{ //The department object
         this.depName = depName; //Name of the department
         this.spriteID = spriteID; //Department sprite
         
+        this.depValue;
+        
         this.phaserObject = null; //Variable for the Phaser sprite
         this.depTextObj = null; //Variable for the text layer
     }
@@ -24,10 +26,14 @@ class obj_department{ //The department object
         this.game.grp_departments.add(this.phaserObject); //This Phaser object or sprite is a department, so add it to the Phaser group.
     }
     
-    accessDepartment(optParameter = null){
+    accessDepartment(){
         console.log(this.depName + " has been accessed!"); //Just something to let me know this function works.
         if(this.depName == "ads" && !this.game.ui_adSales.isActive){
-           this.game.ui_adSales.popUp(optParameter);
+           this.game.ui_adSales.popUp();
         }
+    }
+    
+    grantAd(adObj){
+        this.game.ui_adSales.newAd(adObj);
     }
 }

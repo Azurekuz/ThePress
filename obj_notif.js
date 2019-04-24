@@ -16,7 +16,5 @@ class obj_notif{
     despawn(){
         this.phaserObject.objRef = null; //Nullify the Phaser object's reference to this object
         this.phaserObject.destroy(); //Use the Phaser destroy() function to remove the Phaser sprite
-        delete this.phaserObject; //Delete the Phaser object.
-        delete this; //Self explanatory, maybe?
     }
 }

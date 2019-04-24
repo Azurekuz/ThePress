@@ -6,5 +6,7 @@ class struct_story{ //The story structure that holds info about a given story!
         this.deadlines = deadlineArray; //Array of deadlines, most likely Ints?
         this.size = size; //How many slots in a reporter's story queue it will take up.
         this.progress; //Story progress object.
+        
+        this.pitched = false;
     }
 }

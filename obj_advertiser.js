@@ -4,5 +4,7 @@ class obj_advertiser{
         this.relationVal = initRelation;
         this.advertIncome = income;
         this.interestKeys = interestArray;
+        
+        this.pitched = false;
     }
 }

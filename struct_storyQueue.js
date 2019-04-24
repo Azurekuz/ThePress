@@ -42,7 +42,6 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
                 this.queue[i].progress.iterateProgress(10); //Then make some progress.
             }else{ //Otherwise...
                 this.queue[i].progress.despawn(); //Make the progress bar despawn
-                delete this.queue[i].progress; //Delete the progress structure
                 this.removeStory(this.queue[i].description); //Remove the story from the queue.
                 
                 //Just a test to change some variables.;

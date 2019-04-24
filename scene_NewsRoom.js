@@ -14,13 +14,12 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         
         //console.log(dataReader);
         
-        this.storyCollection = new struct_pitchList();
-        this.adCollection = new struct_salesList(); 
+        this.gameMaster = new GameMaster(this, 5000, 15, 0, 35);
         
-        this.grp_departments = this.add.group(); //This is the Phaser group for sprites representing offices and departments like the Office or Ad Sales
-        this.grp_desks = this.add.group(); //This is the Phaser group for news desk sprites
-        this.grp_workers = this.add.group();  //The Phaser group for workers, although we probably aren't going to be using this.
-        this.notifications = new sys_notify(this); //This is the notification system/object.
+        this.grp_departments = this.gameMaster.grp_departments; //This is the Phaser group for sprites representing offices and departments like the Office or Ad Sales
+        this.grp_desks = this.gameMaster.grp_desks; //This is the Phaser group for news desk sprites
+        this.grp_workers = this.gameMaster.grp_workers;  //The Phaser group for workers, although we probably aren't going to be using this.
+        this.notifications = this.gameMaster.notifications; //This is the notification system/object.
         
         this.ui_dayCounter = new ui_dayCount(this, 10, 10, 1);
         this.ui_dayCounter.spawn();
@@ -43,7 +42,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.player = new obj_player(this, 1650, 250, 47, 47, 'playerSprite'); //Player object
         this.player.spawn(); //Spawn the player object
         
-        this.officeDesks = new struct_deskSet(this, 873, 1001, 3, 3, 310, 210, 295, 201, null, 3, 3); //Set of desks
+        this.officeDesks = this.gameMaster.officeDesks; //Set of desks
         //928
         for(var i = 0; i < 3; i += 1){ //Add two desks to the desk set
             this.officeDesks.addDesk();
@@ -51,13 +50,14 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         
         this.testReporter = new obj_reporter(this, 0, 0, 14, 28, "Glenn", 'reporter'); //Just a test reporter object.
         //this.testReporterB = new obj_reporter(this, 0, 0, 14, 28, "Laura", 'reporter'); //Just a test reporter object.
-        this.officeDesks.deskArray[0].hire(this.testReporter); //Hire and place the reporter at the specified desk.
+        this.officeDesks.deskArray[1].hire(this.testReporter); //Hire and place the reporter at the specified desk.
+        this.officeDesks.deskArray[0].hire(new obj_reporter(this, 0, 0, 14, 28, "Laura", 'reporter')); //Hire and place the reporter at the specified desk.
+        
         //this.officeDesks.deskArray[1].hire(this.testReporterB);
         this.officeDesks.spawn(); //Spawn all of the desks in the set.
         this.officeDesks.deskArray[0].setToWork(); //Have the worker in the first desk be active and working.
-        this.testSources;
-        this.testStory = new struct_story(this, "Hey Boss! So the mayor is announcing a new bikeshare program. There will be docks for the bikes in the downtown area and in midtown. They cost $2 per hour to ride, and the program is thinking of letting metro cards activate them as well. - Laura", ["Mayor", 'Bike Makers', "Enviro. Group"], [1,3,5], 1); //A test story object, we'll probably need to figure out some JSON to store all of the possible story pitches.
-        this.officeDesks.deskArray[0].workingReporter.pitch(this.storyCollection.pitchArray[0]); //Have the worker pitch the story.
+        /*this.officeDesks.deskArray[0].workingReporter.pitch(this.gameMaster.storyCollection.pitchArray[0]);
+        this.officeDesks.deskArray[1].workingReporter.pitch(this.gameMaster.storyCollection.pitchArray[1]);//Have the worker pitch the story.*/
         
         //These are all physics stuff to make sure the player collides with the departments, cooler, and/or desks.
         this.physics.add.collider(this.player.phaserObject, this.grp_departments, this.interactWith);
@@ -72,6 +72,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     update(delta){ //The game update loop
         if(!this.isPaused){ //if the game is not paused...
             this.player.update(); //Then update the player (mostly means allowing the user to control the player)
+            this.gameMaster.update();
             if(this.ui_storyPitch.isActive){ //Are we in the middle of handling a story pitch?
                this.ui_storyPitch.update(); //If so, update the story pitch UI
             }
@@ -96,7 +97,9 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     interactWith(player, department){ //A function that's called when the player collides or walks into a department.
         console.log(department._objRef.depName);
         if(department._objRef.depName == "ads" && !player._objRef.game.ui_adSales.isActive){
-           department._objRef.accessDepartment(player._objRef.game.adCollection.salesArray[0]);
+           console.log(player._objRef.game.gameMaster.salesCollection.salesArray[0]); 
+            department._objRef.grantAd(player._objRef.game.gameMaster.salesCollection.salesArray[0]);
+            department._objRef.accessDepartment();
         }
     }
     

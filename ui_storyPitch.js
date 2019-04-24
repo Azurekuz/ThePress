@@ -90,6 +90,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             this.yesNoPrompt[i].phaserText.setOrigin(0, 0.25);
             this.yesNoPrompt[i].phaserText.depth = 103;
             this.yesNoPrompt[i].phaserObject.depth = 101;
+            this.yesNoPrompt[i].isSelected = false;
         }
         
         for(var i = 0; i < this.sourceList.length; i += 1){
@@ -102,6 +103,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             this.sourceList[i].phaserText.setOrigin(0.5, 0.5);
             this.sourceList[i].phaserText.depth = 103;
             this.sourceList[i].phaserObject.depth= 101;
+            this.sourceList[i].isSelected = false;
         }
         
         for(var i = 0; i < this.deadlineSet.length; i += 1){    
@@ -110,6 +112,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             this.deadlineSet[i].phaserText = this.game.add.text(this.deadlineSet[i].phaserObject.x, this.deadlineSet[i].phaserObject.y, this.curStory.deadlines[i], {fontFamily: "lores-9-wide, Calibri", fontSize: 48});
             this.deadlineSet[i].phaserText.depth = 103;
             this.deadlineSet[i].phaserText.setOrigin(0.5, 0.5);
+            this.deadlineSet[i].isSelected = false;
         }
         
         this.headerRun = this.game.add.image(1605, 116, 'headerRun');
@@ -120,7 +123,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.headerDln.depth = 101;
         
         if(this.curStory != null){
-           this.addText();
+           this.addText(reporterObj);
         }
     }
     
@@ -182,9 +185,9 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         }
     }
     
-    addText(){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.
+    addText(reporterObj){ //Add the pitch text, I have NO clue why it sometimes doesn't bother to show up.
         //this.pitchText = this.game.add.text(157, 99, this.curStory.description, {fontFamily: "lores-9-wide", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center"});
-        this.pitchText = this.game.add.text(157, 200, this.curStory.description, {fontFamily: "lores-9-wide, neusa-next-std Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
+        this.pitchText = this.game.add.text(157, 200, this.curStory.description + reporterObj.name, {fontFamily: "lores-9-wide, neusa-next-std Calibri, Arial, Times New Roman", fontSize: 48, wordWrap: { width: 1040, useAdvancedWrap: true }, align: "center", fontWeight: "bold"});
         this.pitchText.depth = 105;
     }
     
@@ -192,17 +195,14 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].phaserObject.destroy();
             this.yesNoPrompt[i].phaserText.destroy();
-            delete this.yesNoPrompt[i];
         }
         for(var i = 0; i < this.sourceList.length; i += 1){
             this.sourceList[i].phaserObject.destroy();
             this.sourceList[i].phaserText.destroy();
-            delete this.sourceList[i];
         }
         for(var i = 0; i < this.deadlineSet.length; i += 1){
             this.deadlineSet[i].phaserObject.destroy();
             this.deadlineSet[i].phaserText.destroy();
-            delete this.deadlineSet[i];
         }
         this.headerRun.destroy();
         this.headerSrc.destroy();
@@ -213,6 +213,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.game.uiPaused = false;
         this.game.notifications.removeNotif(this.curReporter);
         this.isActive = false;
+        this.curStory.isPitched = true;
     }
     
     /*So yeah, that sums up a good portion of the code, in case you haven't noticed I got increasingly loopier as I went about doing the comments. They say programmers function under an 
