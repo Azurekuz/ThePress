@@ -62,15 +62,12 @@ class Button{ //I need to make a despawn() function, damn it!
         if(this.phaserObjectExists()){
            this.phaserObject.setFrame(2);
         }
-        console.log(this.purposeID.substr(0,4));
         if(this.purposeID.substr(0,5) == 'opscn'){
-            console.log(this.purposeID.substr(6, this.purposeID.length));
             this.game.scene.start(this.purposeID.substr(6, this.purposeID.length));
         }else if(this.purposeID.substr(0,5) == "tggle"){
             this.isSelected = !this.isSelected;
             this.buttonParent.curSelected = this.listIndex;
             this.buttonParent.needsUpdate = true;
-            console.log(this.isSelected)
         }else if(this.purposeID.substr(0,5) == "uicon"){ //UI confirm buttons, these are for affirming, denying, or cancelling popups/ui elements.
             this.buttonParent.needsUpdate = true;
             this.isSelected = !this.isSelected;

@@ -67,6 +67,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         this.tickDay = 0;
         //this.add.image(165, 167, 'office');
         //this.add.image(135, 585, 'adsRoom');
+        this.gameMaster.getRandReporter().pitch(this.gameMaster.pushPitch());
     }
     
     update(delta){ //The game update loop

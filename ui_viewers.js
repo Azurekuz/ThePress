@@ -20,7 +20,6 @@ class ui_viewers{
             if(this.curViewers > this.targetViewers){
                this.adjustCurrent(Math.floor(-(Math.random()*this.rngRange[1])+this.rngRange[0]));
             }
-            console.log(Math.floor((Math.random()*this.rngRange[1])+this.rngRange[0]));
             this.updateText();
         }
     }

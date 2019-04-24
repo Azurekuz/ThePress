@@ -17,6 +17,9 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.sourceList = [];
         this.deadlineSet = [];
         
+        this.selSource;
+        this.selDL;
+        
         //Oh boy, let's create some Yes/No buttons.
         this.btn_Yes = new Button(this.game, 1480, 214, 195, 141, null, 'ynBtn', null, 'uicon');
         this.btn_No = new Button(this.game, 1720, 214, 195, 141, null, 'ynBtn', null, 'uicon');
@@ -113,6 +116,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             this.deadlineSet[i].phaserText.depth = 103;
             this.deadlineSet[i].phaserText.setOrigin(0.5, 0.5);
             this.deadlineSet[i].isSelected = false;
+            this.deadlineSet[i].buttonValue = this.curStory.deadlines[i];
         }
         
         this.headerRun = this.game.add.image(1605, 116, 'headerRun');
@@ -131,7 +135,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         if(this.yesNoPrompt.needsUpdate){ //Hey do we need to update because of the Y/N buttons being clicked?
             console.log(this.yesNoPrompt[0]);
                if(this.yesNoPrompt[0].isSelected && this.isSelected()){
-                    this.curReporter.takeOnStory();
+                    this.curReporter.takeOnStory(this.selDL.buttonValue);
                     this.yesNoPrompt[0].isSelected = false;
                     this.dismiss(); //Dismiss the UI
                     this.yesNoPrompt.needsUpdate = !this.yesNoPrompt.needsUpdate; //We no longer need updating.
@@ -150,6 +154,8 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
                if(this.deadlineSet[i].isSelected && i != this.deadlineSet.curSelected){
                   this.deadlineSet[i].isSelected = false;
                    this.deadlineSet[i].phaserObject.setFrame(0);
+                }else if(this.deadlineSet[i].isSelected && i == this.deadlineSet.curSelected){
+                    this.selDL = this.deadlineSet[i];
                 }
            }
             this.deadlineSet.needsUpdate = !this.deadlineSet.needsUpdate;
@@ -159,6 +165,8 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
                if(this.sourceList[i].isSelected && i != this.sourceList.curSelected){
                     this.sourceList[i].isSelected = false;
                     this.sourceList[i].phaserObject.setFrame(0);
+                }else if(this.sourceList[i].isSelected && i == this.sourceList.curSelected){
+                    this.selSource = this.sourceList[i];
                 }
            }
             this.sourceList.needsUpdate = !this.sourceList.needsUpdate;
@@ -213,7 +221,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
         this.game.uiPaused = false;
         this.game.notifications.removeNotif(this.curReporter);
         this.isActive = false;
-        this.curStory.isPitched = true;
+        this.curStory.pitched = true;
     }
     
     /*So yeah, that sums up a good portion of the code, in case you haven't noticed I got increasingly loopier as I went about doing the comments. They say programmers function under an 

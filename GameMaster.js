@@ -21,10 +21,11 @@ class GameMaster{
     
     update(){
         if(this.game.time.now - this.pitchInterval >= 15000){
-            console.log("New Pitch!");
             this.checkAll();
             if(!this.isDone){
-               this.getRandReporter().pitch(this.pushPitch());
+                if(!this.storyCollection.isDone){
+                    this.getRandReporter().pitch(this.pushPitch());
+                }
             }
             this.pitchInterval = this.game.time.now;
         }
