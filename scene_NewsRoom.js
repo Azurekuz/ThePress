@@ -99,7 +99,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         console.log(department._objRef.depName);
         if(department._objRef.depName == "ads" && !player._objRef.game.ui_adSales.isActive){
            console.log(player._objRef.game.gameMaster.salesCollection.salesArray[0]); 
-            department._objRef.grantAd(player._objRef.game.gameMaster.salesCollection.salesArray[0]);
+            department._objRef.grantAd(player._objRef.game.gameMaster.salesCollection.salesArray[Math.floor(Math.random()*player._objRef.game.gameMaster.salesCollection.salesArray.length)]);
             department._objRef.accessDepartment();
         }
     }

@@ -5,6 +5,9 @@ class GameMaster{
         this.storyCollection = new struct_pitchList();
         this.salesCollection = new struct_salesList();
         
+        //This is where you add advertisers who are supporting your news organization.
+        this.friendAdverts = [];
+        
         this.grp_departments = this.game.add.group(); //This is the Phaser group for sprites representing offices and departments like the Office or Ad Sales
         this.grp_desks = this.game.add.group(); //This is the Phaser group for news desk sprites
         this.grp_workers = this.game.add.group();  //The Phaser group for workers, although we probably aren't going to be using this.
@@ -100,5 +103,13 @@ class GameMaster{
         if(this.storyCollection.isDone && this.salesCollection.isDone){
            this.isDone = true;
         }
+    }
+    
+    advertSignOn(){
+        
+    }
+
+    advertBoost(){
+        
     }
 }
