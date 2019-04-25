@@ -1,6 +1,7 @@
 class GameMaster{
     constructor(context, startBudget = 5000, startCred, startViews, startLit){
         this.game = context;
+        this.game.sfxDone = this.game.sound.add('sfxDone');
         this.storyCollection = new struct_pitchList();
         this.salesCollection = new struct_salesList();
         

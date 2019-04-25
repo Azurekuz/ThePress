@@ -6,6 +6,9 @@ class sceneBoot extends Phaser.Scene{
 
     preload(){
         /* Preload all needed game assets*/
+        this.load.audio('sfxClick', 'assets/audio/sfx/Click.wav');
+        this.load.audio('sfxHover', 'assets/audio/sfx/Hover.wav');
+        this.load.audio('sfxDone', 'assets/audio/sfx/Done.wav');
         this.load.image('testScreen', 'assets/ui/mainMenu/ThePressTestScreen.png');
         this.load.spritesheet('menuBtn', 'assets/ui/mainMenu/MenuButton.png', {frameWidth: 568, frameHeight: 54});
         this.load.spritesheet('playerSprite', 'assets/sprites/playerSprite.png', {frameWidth: 84, frameHeight: 165});

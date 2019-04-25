@@ -39,6 +39,7 @@ class struct_storyProgress{
         }
         if(this.curProgress >= this.maxProgress){ //If we have reached the bar's maximum
             this.isFinished = true; //THen we have finished the story.
+            this.game.sfxDone.play();
             this.finishStory(); //So finish it off.
         }
     }

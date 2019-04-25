@@ -20,6 +20,9 @@ class Button{ //I need to make a despawn() function, damn it!
         
         this.phaserObject = null;
         this.phaserText = null;
+        
+        this.sfxHover = this.game.sound.add('sfxHover');
+        this.sfxClick = this.game.sound.add('sfxClick');
     }
 
     spawn(){ //The function that's called to make the button actually appear.
@@ -45,6 +48,9 @@ class Button{ //I need to make a despawn() function, damn it!
     enterHoverState(){ //Called when the user is hovering over the button
         if(this.phaserObjectExists()){
            this.phaserObject.setFrame(1);
+        }
+        if(this.sfxHover != null){
+           this.sfxHover.play();
         }
     }
     
@@ -75,7 +81,9 @@ class Button{ //I need to make a despawn() function, damn it!
         }else if(this.purposeID.substr(0,5) == "opURL"){
             window.open(this.purposeID.substr(6, this.purposeID.length), "_blank");
         }
-        
+        if(this.sfxClick != null){
+           this.sfxClick.play();
+        }
     }
     
     phaserObjectExists(){ //Just a simple check to see if the Phaser sprite exists, without cluttering up the code
