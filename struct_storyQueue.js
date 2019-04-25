@@ -9,6 +9,8 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
     addStory(newStory){ //Add a new story to the queue
         if(!this.isQueueFull(newStory)){ //if adding the given story doesn't go over the queue capacity
            this.queue.push(newStory); //Then add it to the array.
+            this.curCap = this.curCap + newStory.size;
+            console.log("Filled Slots: " + this.curCap + "/" + this.maxCap);
         }else{
             return false; //Otherwise don't.
         }
@@ -25,7 +27,6 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
     removeStory(storyID){ //Remove a story from the array.
         var tempArray = []; //Temporary array that will become the new story queue (minus the removed story).
         for(var i = 0; i < this.queue.length; i += 1){ //Go through the queue
-            console.log(this.queue);
             if(this.queue[i].description != storyID){ //If the descriptions do not match
                tempArray.push(this.queue[i]); //Add it to the new array
             }else{
@@ -42,10 +43,11 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
                 this.queue[i].progress.iterateProgress(10); //Then make some progress.
             }else{ //Otherwise...
                 this.queue[i].progress.despawn(); //Make the progress bar despawn
+                this.curCap = this.curCap - this.queue[i].size;
                 this.removeStory(this.queue[i].description); //Remove the story from the queue.
                 
                 //Just a test to change some variables.;
-                console.log("DELETED")
+                console.log("Filled Slots: " + this.curCap + "/" + this.maxCap);
             }
         }
     }

@@ -1,5 +1,5 @@
 class obj_player{
-    constructor(context, xLoc, yLoc, width, height, spriteID, speed = 1000){
+    constructor(context, xLoc, yLoc, width, height, spriteID, speed = 250){
         this.game = context; //Phaser reference
         
         this.xLocation = xLoc; //X location of the player
@@ -8,6 +8,7 @@ class obj_player{
         this.height = height; //Height of the player sprite
         this.spriteID = spriteID; //The actual sprite or visuals of the player
         this.speed = speed; //How fast does the player go?
+        this.curAnim = null;
         
         this.phaserObject = null; //The actual Phaser sprite of the player
         this.isInteracting = false; //Is the player interacting with something?
@@ -28,6 +29,7 @@ class obj_player{
         this.phaserObject.setCollideWorldBounds(true); //The player can collide with the edges of the screen
         this.phaserObject._objRef = this; //The Phaser sprite has a reference to this object
         this.phaserObject.depth = 10; //The depth of the object
+        this.phaserObject.play("idle");
     }
     
     update(delta){ //The player update loop
@@ -38,18 +40,34 @@ class obj_player{
         if(!this.game.uiPaused){ //If the game isn't paused then check for all relevant movement inputs, in other words check if the user wants the player to move around on screen.
             if(this.game.controls.upKey.isDown){
                 this.phaserObject.setVelocityY(-this.speed);
+                if(this.curAnim != "up"){
+                    this.phaserObject.play('walkUp');
+                    this.curAnim = "up";
+                }
             }
             if(this.game.controls.downKey.isDown){
-                this.phaserObject.setVelocityY(this.speed);   
+                this.phaserObject.setVelocityY(this.speed);
+                if(this.curAnim != "down"){
+                    this.phaserObject.play("walkDown");
+                    this.curAnim = "down";
+                }
             }
             if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown){
                 this.phaserObject.setVelocityY(0);
             }
             if(this.game.controls.leftKey.isDown){
                 this.phaserObject.setVelocityX(-this.speed);
+                if(this.curAnim != "left"){
+                    this.phaserObject.play("walkLeft");
+                    this.curAnim = "left";
+                }
             }
             if(this.game.controls.rightKey.isDown){
                 this.phaserObject.setVelocityX(this.speed);
+                if(this.curAnim != "right"){
+                    this.phaserObject.play("walkRight");
+                    this.curAnim = "right";
+                }
             }
             if(!this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown){
                 this.phaserObject.setVelocityX(0);
@@ -59,9 +77,19 @@ class obj_player{
             }else if(!this.game.controls.interactKey.isDown && this.isInteracting){
                 this.isInteracting = false;
             }
+            if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown && !this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown){
+                if(this.curAnim != "idle"){
+                    this.phaserObject.play("idle");
+                    this.curAnim = "idle";
+                }   
+            }
         }else{ //Stop the player if all else fails
             this.phaserObject.setVelocityY(0);
             this.phaserObject.setVelocityX(0);
+            if(this.curAnim != "idle"){
+                this.phaserObject.play("idle");
+                this.curAnim = "idle";
+            }
         }
     }
     

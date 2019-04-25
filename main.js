@@ -8,7 +8,7 @@ class sceneBoot extends Phaser.Scene{
         /* Preload all needed game assets*/
         this.load.image('testScreen', 'assets/ui/mainMenu/ThePressTestScreen.png');
         this.load.spritesheet('menuBtn', 'assets/ui/mainMenu/MenuButton.png', {frameWidth: 568, frameHeight: 54});
-        this.load.spritesheet('playerSprite', 'assets/sprites/player.png', {frameWidth: 84, frameHeight: 168});
+        this.load.spritesheet('playerSprite', 'assets/sprites/playerSprite.png', {frameWidth: 84, frameHeight: 165});
         this.load.image('adsRoom', 'assets/stage/newsRoom/AdSales.png');
         this.load.image('nd_Glenn', 'assets/stage/newsRoom/Glenn.png');
         this.load.image('nd_Laura', 'assets/stage/newsRoom/Laura.png');

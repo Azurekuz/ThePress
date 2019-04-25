@@ -10,6 +10,8 @@ class GameMaster{
         this.notifications = new sys_notify(this.game);
         this.officeDesks = new struct_deskSet(this.game, 873, 1001, 3, 3, 310, 210, 295, 201, null, 3, 3); 
         
+        this.animComp = new AnimComp(this.game);
+        
         this.curBudget = startBudget;
         this.curCred = startCred;
         this.curViews = startViews;
