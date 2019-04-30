@@ -30,6 +30,8 @@ class obj_desk{
            this.updateDesk();
         }
         this.game.grp_desks.add(this.phaserObject); //Add the Phaser sprite to the Phaser group for collision purposes.
+        this.phaserObject.setInteractive({useHandCursor: true}) 
+            .on('pointerdown', () => this.enterActiveState());
     }
     
     hire(reporterObj){
@@ -57,6 +59,16 @@ class obj_desk{
     updateDesk(){ //Desk update loop
         if(this.workingReporter != null || this.workingReporter != undefined){
             this.workingReporter.work();
+        }
+    }
+   
+    enterActiveState(){ //Called when the button is clicked.
+        if(this.workingReporter.needsNotify){
+            this.game.ui_storyPitch.popUp(this.workingReporter, this.workingReporter.storyPitch);
+            this.game.ui_storyPitch.isActive = true;
+            this.game.ui_storyPitch.curReporter = this.workingReporter;
+            this.workingReporter.needsNotify = false;
+            this.game.uiPaused = true;
         }
     }
 }
