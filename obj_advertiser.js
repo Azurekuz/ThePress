@@ -1,8 +1,8 @@
 class obj_advertiser{
     constructor(idNum, description, initRelation, income, interestArray, tier, linkStoryID = null){
         this.adID = idNum;
-        this.tier = tier;
-        this.linkStoryID = linkStoryID;
+        //this.tier = tier;
+        //this.linkStoryID = linkStoryID;
         this.description = description;
         this.relationVal = initRelation;
         this.advertIncome = income;

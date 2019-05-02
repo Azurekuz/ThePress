@@ -43,7 +43,7 @@ class obj_reporter{
         if(!this.storyQueue.isQueueFull(this.storyPitch)){ //Check to see if there's space in the story queue for this story.
             this.storyQueue.addStory(this.storyPitch); //Add said story to the story queue.
             //Add a progress bar, will need to account for multiple stories in the future.
-            this.storyPitch.progress = new struct_storyProgress(this.game, this.xLocation, this.yLocation, 0, 100 * deadline, 'progressBar','barFill',39,157); 
+            this.storyPitch.progress = new struct_storyProgress(this.game, this.xLocation, this.yLocation, 0, 100 * deadline, 'progressBar','barFill',196,37); 
             this.storyPitch.progress.spawn();
         }
         this.needsNotify = false; //This reporter no longer needs a notification.
