@@ -21,6 +21,7 @@ class obj_player{
         this.game.controls.leftKey = this.game.input.keyboard.addKey(65); //Left key (A)
         this.game.controls.rightKey = this.game.input.keyboard.addKey(68); //Right key (D)
         this.game.controls.interactKey = this.game.input.keyboard.addKey(69); //E Key
+        this.game.controls.arrowKeys = this.game.input.keyboard.createCursorKeys();
     }
     
     spawn(){ //Spawn the player object
@@ -38,38 +39,39 @@ class obj_player{
     
     checkControls(){ //Function responsible for player movement
         if(!this.game.uiPaused){ //If the game isn't paused then check for all relevant movement inputs, in other words check if the user wants the player to move around on screen.
-            if(this.game.controls.upKey.isDown){
+            console.log(this.game.controls.arrowKeys.up.isDown);
+            if(this.game.controls.upKey.isDown || this.game.controls.arrowKeys.up.isDown){
                 this.phaserObject.setVelocityY(-this.speed);
                 if(this.curAnim != "up"){
                     this.phaserObject.play('walkUp');
                     this.curAnim = "up";
                 }
             }
-            if(this.game.controls.downKey.isDown){
+            if(this.game.controls.downKey.isDown || this.game.controls.arrowKeys.down.isDown){
                 this.phaserObject.setVelocityY(this.speed);
                 if(this.curAnim != "down"){
                     this.phaserObject.play("walkDown");
                     this.curAnim = "down";
                 }
             }
-            if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown){
+            if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown && !this.game.controls.arrowKeys.up.isDown && !this.game.controls.arrowKeys.down.isDown){
                 this.phaserObject.setVelocityY(0);
             }
-            if(this.game.controls.leftKey.isDown){
+            if(this.game.controls.leftKey.isDown || this.game.controls.arrowKeys.left.isDown){
                 this.phaserObject.setVelocityX(-this.speed);
                 if(this.curAnim != "left"){
                     this.phaserObject.play("walkLeft");
                     this.curAnim = "left";
                 }
             }
-            if(this.game.controls.rightKey.isDown){
+            if(this.game.controls.rightKey.isDown || this.game.controls.arrowKeys.right.isDown){
                 this.phaserObject.setVelocityX(this.speed);
                 if(this.curAnim != "right"){
                     this.phaserObject.play("walkRight");
                     this.curAnim = "right";
                 }
             }
-            if(!this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown){
+            if(!this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown && !this.game.controls.arrowKeys.left.isDown && !this.game.controls.arrowKeys.right.isDown){
                 this.phaserObject.setVelocityX(0);
             }
             if(this.game.controls.interactKey.isDown && !this.isInteracting){
@@ -77,7 +79,7 @@ class obj_player{
             }else if(!this.game.controls.interactKey.isDown && this.isInteracting){
                 this.isInteracting = false;
             }
-            if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown && !this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown){
+            if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown && !this.game.controls.leftKey.isDown && !this.game.controls.rightKey.isDown && !this.game.controls.arrowKeys.right.isDown && !this.game.controls.arrowKeys.left.isDown && !this.game.controls.arrowKeys.up.isDown && !this.game.controls.arrowKeys.down.isDown){
                 if(this.curAnim != "idle"){
                     this.phaserObject.play("idle");
                     this.curAnim = "idle";

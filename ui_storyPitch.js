@@ -102,7 +102,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
             
             var fontSize = 36;
             
-            this.sourceList[i].phaserText = this.game.add.text(this.sourceList[i].phaserObject.x, this.sourceList[i].phaserObject.y, this.sourceList[i].buttonValue, {fontFamily: "lores-9-wide, Calibri", fontSize: fontSize});
+            this.sourceList[i].phaserText = this.game.add.text(this.sourceList[i].phaserObject.x, this.sourceList[i].phaserObject.y, this.sourceList[i].buttonValue.sourceLabel, {fontFamily: "lores-9-wide, Calibri", fontSize: fontSize});
             this.sourceList[i].phaserText.setOrigin(0.5, 0.5);
             this.sourceList[i].phaserText.depth = 103;
             this.sourceList[i].phaserObject.depth= 101;
