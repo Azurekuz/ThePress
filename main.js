@@ -46,6 +46,7 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('titleAboutBtn', 'assets/ui/mainMenu/titleAbout.png', {frameWidth: 422, frameHeight:88});
         this.load.spritesheet('xBtn', 'assets/ui/mainMenu/xBtn.png', {frameWidth: 65, frameHeight:65});
         this.load.spritesheet('guideBtn','assets/ui/mainMenu/JournoGuideButton.png', {frameWidth:405, frameHeight:113} );
+        //Hi
     }
     
     create(){
