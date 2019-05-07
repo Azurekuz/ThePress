@@ -58,7 +58,15 @@ class sceneBoot extends Phaser.Scene{
         this.helpButton = new Button(this, 1200, 920, 422, 88, null, "titleHowBtn", null, 'opscn_scene_How');
         this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
         
-        this.playButton.spawn();
+        const FONT_NAME = 'Amatica SC';
+        let font1 = new FontFaceObserver('lores-9-wide');
+        let font2 = new FontFaceObserver('lores-9-narrow');
+        
+        const func = () => {
+            this.playButton.spawn();
+        }
+        font2.load();
+        font1.load().then(func);
         this.helpButton.spawn();
         this.aboutButton.spawn();
         var bgmConfig = {
