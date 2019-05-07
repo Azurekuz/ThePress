@@ -39,7 +39,6 @@ class obj_player{
     
     checkControls(){ //Function responsible for player movement
         if(!this.game.uiPaused){ //If the game isn't paused then check for all relevant movement inputs, in other words check if the user wants the player to move around on screen.
-            console.log(this.game.controls.arrowKeys.up.isDown);
             if(this.game.controls.upKey.isDown || this.game.controls.arrowKeys.up.isDown){
                 this.phaserObject.setVelocityY(-this.speed);
                 if(this.curAnim != "up"){

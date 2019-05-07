@@ -7,6 +7,7 @@ class sceneBoot extends Phaser.Scene{
     preload(){
         /* Preload all needed game assets*/
         this.load.audio('sfxClick', 'assets/audio/sfx/Click.wav');
+        this.load.audio('bgmMain', 'assets/audio/bgm/laferve.wav');
         this.load.audio('sfxHover', 'assets/audio/sfx/Hover.wav');
         this.load.audio('sfxDone', 'assets/audio/sfx/Done.wav');
         this.load.image('testScreen', 'assets/ui/mainMenu/ThePressTestScreen.png');
@@ -60,6 +61,19 @@ class sceneBoot extends Phaser.Scene{
         this.playButton.spawn();
         this.helpButton.spawn();
         this.aboutButton.spawn();
+        var bgmConfig = {
+            mute: false,
+            volume: 0.65,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        };
+        if(this.curBGM != null || this.curBGM != undefined){
+            this.curBGM = this.sound.add('bgmMain', bgmConfig);
+            this.curBGM.play();
+        }
         /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.

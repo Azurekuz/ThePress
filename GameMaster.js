@@ -65,13 +65,11 @@ class GameMaster{
     
     getRandReporter(){
         var randDesk = this.officeDesks.deskArray[Math.floor(Math.random()*this.officeDesks.deskArray.length)];
-        console.log();
         if(randDesk.workingReporter == null){
             while(randDesk.workingReporter == null){
                 randDesk = this.officeDesks.deskArray[Math.floor(Math.random()*this.officeDesks.deskArray.length)];
             }
         }
-        console.log(randDesk.workingReporter);
         return randDesk.workingReporter;
     }
     
