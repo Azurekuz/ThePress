@@ -70,7 +70,7 @@ class sceneBoot extends Phaser.Scene{
             loop: true,
             delay: 0
         };
-        if(this.curBGM != null || this.curBGM != undefined){
+        if(this.curBGM == null || this.curBGM == undefined){
             this.curBGM = this.sound.add('bgmMain', bgmConfig);
             this.curBGM.play();
         }
