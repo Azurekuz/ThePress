@@ -23,10 +23,10 @@ class struct_pitchList{
     
     initialStories(){
         this.availableStoryArray.push(this.pitchArray[0]);
-        /*this.availableStoryArray.push(this.pitchArray[3]);
+        this.availableStoryArray.push(this.pitchArray[3]);
         this.availableStoryArray.push(this.pitchArray[4]);
         this.availableStoryArray.push(this.pitchArray[5]);
-        this.availableStoryArray.push(this.pitchArray[6]);*/
+        this.availableStoryArray.push(this.pitchArray[6]);
     }
     
     makeAvailable(findID){
