@@ -64,7 +64,7 @@ class sceneBoot extends Phaser.Scene{
         this.isPaused = false; //The variable used to pause the entire game.
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const titleBack = this.add.image(960, 540, "titleBack"); //Title background
-        this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_NewsRoom');
+        this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_Intro');
         this.helpButton = new Button(this, 1200, 920, 422, 88, null, "titleHowBtn", null, 'opscn_scene_How');
         this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
         this.muteButton = new Button(this, 50, 1030, 100, 100, null, "muteBTN", null, 'mtBGM');
@@ -111,7 +111,7 @@ var config = { //API Configuration for the Phaser game
     type: Phaser.AUTO,
         width: 1920, //Window width
         height: 1080, //Window height
-        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social, scene_About, scene_How], //All of the Phaser scenes
+        scene: [ sceneBoot, scene_NewsRoom, scene_Office, scene_Social, scene_About, scene_How, scene_Intro], //All of the Phaser scenes
         physics: {
             default: 'arcade',
             arcade: {
