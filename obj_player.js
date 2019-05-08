@@ -56,14 +56,14 @@ class obj_player{
             if(!this.game.controls.upKey.isDown && !this.game.controls.downKey.isDown && !this.game.controls.arrowKeys.up.isDown && !this.game.controls.arrowKeys.down.isDown){
                 this.phaserObject.setVelocityY(0);
             }
-            if(this.game.controls.leftKey.isDown || this.game.controls.arrowKeys.left.isDown){
+            if((this.game.controls.leftKey.isDown || (this.game.controls.leftKey.isDown && (this.game.controls.downKey.isDown || this.game.controls.upKey.isDown))) || (this.game.controls.arrowKeys.left.isDown || (this.game.controls.arrowKeys.left.isDown && (this.game.controls.arrowKeys.down.isDown || this.game.controls.arrowKeys.up.isDown)))){
                 this.phaserObject.setVelocityX(-this.speed);
                 if(this.curAnim != "left"){
                     this.phaserObject.play("walkLeft");
                     this.curAnim = "left";
                 }
             }
-            if(this.game.controls.rightKey.isDown || this.game.controls.arrowKeys.right.isDown){
+            if((this.game.controls.rightKey.isDown || (this.game.controls.rightKey.isDown && (this.game.controls.downKey.isDown || this.game.controls.upKey.isDown))) || (this.game.controls.arrowKeys.right.isDown || (this.game.controls.arrowKeys.right.isDown && (this.game.controls.arrowKeys.down.isDown || this.game.controls.arrowKeys.up.isDown)))){
                 this.phaserObject.setVelocityX(this.speed);
                 if(this.curAnim != "right"){
                     this.phaserObject.play("walkRight");

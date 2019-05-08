@@ -24,7 +24,6 @@ class obj_department{ //The department object
         /*This is to make sure the Phaser object/sprite has access to the object its embedded in. This is to make coding collision events easier when we need to get stuff from the object.*/
         this.phaserObject._objRef = this;
         this.game.grp_departments.add(this.phaserObject); //This Phaser object or sprite is a department, so add it to the Phaser group.
-        console.log(this.game);
         if(this.game.game.isMobile[0]){
             this.phaserObject.setInteractive({useHandCursor: true}) 
                 .on('pointerdown', () => this.enterActiveState());
@@ -33,10 +32,9 @@ class obj_department{ //The department object
     
     accessDepartment(){
         console.log(this.depName + " has been accessed!"); //Just something to let me know this function works.
-        if(this.depName == "ads" && !this.game.ui_adSales.isActive && !this.game.ui_storyPitch.isActive){
-            console.log(this.game.player);
+        if(this.depName == "ads" && !this.game.ui_adSales.isActive && !this.game.ui_storyPitch.isActive){  
             this.grantAd(this.game.gameMaster.salesCollection.salesArray[Math.floor(Math.random()*this.game.gameMaster.salesCollection.salesArray.length)]);
-           this.game.ui_adSales.popUp();
+            this.game.ui_adSales.popUp();
         }
     }
     

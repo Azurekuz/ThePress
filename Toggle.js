@@ -33,7 +33,6 @@ class Toggle{
         }
         this.flipBool[0] = !this.flipBool[0];
         this.isActive = false;
-        console.log("Toggled: " + this.flipBool[0].toString());
         
     }
     

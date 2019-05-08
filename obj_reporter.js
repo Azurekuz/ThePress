@@ -38,14 +38,12 @@ class obj_reporter{
         this.game.notifications.addNotif(this); //Add said notification
     }
     
-    takeOnStory(deadline = 1){
+    takeOnStory(source, deadline){
         if(!this.storyQueue.isQueueFull(this.storyPitch)){ //Check to see if there's space in the story queue for this story.
             this.storyPitch.deadline = deadline;
-            this.storyPitch.source = null;
+            this.storyPitch.source = source;
             this.storyQueue.addStory(this.storyPitch); //Add said story to the story queue.
             //Add a progress bar, will need to account for multiple stories in the future.
-            console.log("Hello?");
-            console.log(deadline);
             this.storyPitch.progress = new struct_storyProgress(this.game, this.xLocation, this.yLocation, 0, 100 * deadline, 'progressBar','barFill',196,37); 
             this.storyPitch.progress.spawn();
         }

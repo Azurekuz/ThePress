@@ -60,7 +60,6 @@ class struct_storyProgress{
     }
     
     finishStory(){ //So, the story is done. Here is a test function making sure stuff happens when the story is done. This will be implemented differently.
-        console.log("Story finished!");
         this.game.ui_viewers.adjustTarget(50);
     }
 }

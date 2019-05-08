@@ -55,8 +55,9 @@ class sceneBoot extends Phaser.Scene{
     
     create(){
         var tempAnim = new AnimComp(this);
-        this.game.isMobile = [false];
-        
+        if(this.game.isMobile == null || this.game.isMobile == undefined){
+            this.game.isMobile = [false];
+        }
         this.isPaused = false; //The variable used to pause the entire game.
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const titleBack = this.add.image(960, 540, "titleBack"); //Title background
@@ -94,7 +95,6 @@ class sceneBoot extends Phaser.Scene{
             this.game.curBGM = this.sound.add('bgmMain', bgmConfig);
             this.game.curBGM.play();
         }
-        console.log(this.game.curBGM);
         /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.
