@@ -8,7 +8,7 @@ class sys_notify{ //The notification system, woo!
         if(objType == 'reporter'){
             owner.notif = new obj_notif(this.game, owner, 'notif', 250, 160); //Make the notification
         }else if(objType == 'department'){
-            owner.notif = new obj_notif(this.game, owner, 'smlNotif', 45, 45, 'department'); //Make the notification
+            owner.notif = new obj_notif(this.game, owner, 'adNotif', 250, 160, 'department'); //Make the notification
         }
         this.notifArray.push(owner.notif); //Push said notification into the array.
         owner.notif.spawn(); //Spawn said notification

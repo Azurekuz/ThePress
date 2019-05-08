@@ -98,9 +98,7 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     }
     
     interactWith(player, department){ //A function that's called when the player collides or walks into a department.
-        console.log(department._objRef.depName);
         if(department._objRef.depName == "ads" && !player._objRef.game.ui_adSales.isActive){
-           console.log(player._objRef.game.gameMaster.salesCollection.salesArray[0]); 
             department._objRef.accessDepartment();
         }
     }

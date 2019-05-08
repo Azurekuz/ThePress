@@ -13,7 +13,7 @@ class obj_notif{
         if(this.ownerType == 'reporter'){
             this.phaserObject = this.game.add.sprite(this.owner.xLocation + ((Math.floor(this.width/2)) - (this.owner.width/2)), this.owner.yLocation - ((Math.floor(this.height/2)) - (this.owner.height/2)), this.spriteID); //Add the Phaser object
         }else if(this.ownerType == 'department'){
-           this.phaserObject = this.game.add.sprite(this.owner.xLocation - ((Math.floor(this.width/2)) - (this.owner.width/2)), this.owner.yLocation + ((Math.floor(this.height/2)) - (this.owner.height/2)), this.spriteID); //Add the Phaser object      
+           this.phaserObject = this.game.add.sprite(this.owner.xLocation - ((Math.floor(this.width/2) + 15) - (this.owner.width/2)), this.owner.yLocation + ((Math.floor(this.height/2) - 15) - (this.owner.height/2)), this.spriteID); //Add the Phaser object      
         }
         this.phaserObject.objRef = this; //Have the Phaser Object reference this object
         this.phaserObject.depth = 49; //Set the depth of the notification

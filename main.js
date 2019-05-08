@@ -50,8 +50,10 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('isMobile', 'assets/ui/mainMenu/isMobile.png');
         this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 125, frameHeight:375});
         this.load.spritesheet('muteBTN', 'assets/ui/mainMenu/mute.png', {frameWidth: 100, frameHeight:100});
-        this.load.image('smlNotif', 'assets/ui/office/SmlNotif.png', {frameWidth: 100, frameHeight:100});
-        //Hi
+        this.load.image('smlNotif', 'assets/ui/office/SmlNotif.png');
+        this.load.image('adNotif', 'assets/ui/office/adSalesBubble.png');
+        this.load.image('bblNotif', 'assets/ui/office/notif.png');
+        //Hi adSalesBubble.png
     }
     
     create(){
