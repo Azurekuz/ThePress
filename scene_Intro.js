@@ -12,7 +12,7 @@ class scene_Intro extends Phaser.Scene{
         this.video.depth = 0;
         this.video.setInteractive({useHandCursor: true}) 
             .on('pointerdown', () => this.skip());
-        this.xBtn = new Button(this, 1845, 75, 150, 150, null, "xBtn", null, 'skpIn', false);
+        this.xBtn = new Button(this, 1845, 75, 150, 150, null, "xBtn", null, 'skInt', false);
         this.xBtn.spawn();
     }
     

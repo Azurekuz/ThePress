@@ -84,7 +84,11 @@ class Button{ //I need to make a despawn() function, damn it!
            this.phaserObject.setFrame(2);
         }
         if(this.purposeID.substr(0,5) == 'opscn'){
-            this.game.scene.start(this.purposeID.substr(6, this.purposeID.length));
+            if(this.purposeID.substr(6, this.purposeID.length) == "scene_Intro" && this.game.game.isMobile[0]){
+                this.game.scene.start("scene_NewsRoom");
+            }else{
+                this.game.scene.start(this.purposeID.substr(6, this.purposeID.length));
+            }
         }else if(this.purposeID.substr(0,5) == "tggle"){
             this.isSelected = !this.isSelected;
             this.buttonParent.curSelected = this.listIndex;
