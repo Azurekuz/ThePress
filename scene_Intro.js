@@ -8,8 +8,7 @@ class scene_Intro extends Phaser.Scene{
     }
     
     create(){
-        this.video = new video_t(this, 'intro', 960, 540, 'intro', 'assets/media/introVideo.mp4', 1920, 1080, true);
-        console.log(this.video);
+        this.video = new video_t(this, 'intro', 960, 540, 'intro', 'assets/media/introVideo.mp4', 1920, 1080, false);
         this.video.depth = 0;
         this.video.setInteractive({useHandCursor: true}) 
             .on('pointerdown', () => this.skip());
