@@ -50,6 +50,7 @@ class sceneBoot extends Phaser.Scene{
         this.load.image('isMobile', 'assets/ui/mainMenu/isMobile.png');
         this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 50, frameHeight:150});
         this.load.spritesheet('muteBTN', 'assets/ui/mainMenu/mute.png', {frameWidth: 100, frameHeight:100});
+        this.load.image('smlNotif', 'assets/ui/office/SmlNotif.png', {frameWidth: 100, frameHeight:100});
         //Hi
     }
     

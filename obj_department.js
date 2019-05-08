@@ -29,6 +29,8 @@ class obj_department{ //The department object
             this.phaserObject.setInteractive({useHandCursor: true}) 
                 .on('pointerdown', () => this.enterActiveState());
         }
+        this.needsNotify = true; //This needs a notification
+        this.game.notifications.addNotif(this, 'department'); //Add said notification
     }
     
     accessDepartment(){
