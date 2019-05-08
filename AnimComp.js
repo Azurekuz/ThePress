@@ -36,5 +36,12 @@ class AnimComp{
             frameRate: 3,
             repeat: -1
         });
+        
+        this.game.anims.create({
+            key: 'flip',
+            frames: this.game.anims.generateFrameNumbers('mobileToggle', {start: 0, end: 6}),
+            frameRate: 16,
+            repeat: 0
+        });
     }
 }

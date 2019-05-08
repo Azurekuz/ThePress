@@ -47,16 +47,24 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('titleAboutBtn', 'assets/ui/mainMenu/titleAbout.png', {frameWidth: 422, frameHeight:88});
         this.load.spritesheet('xBtn', 'assets/ui/mainMenu/xBtn.png', {frameWidth: 65, frameHeight:65});
         this.load.spritesheet('guideBtn','assets/ui/mainMenu/JournoGuideButton.png', {frameWidth:405, frameHeight:113} );
+        this.load.image('isMobile', 'assets/ui/mainMenu/isMobile.png');
+        this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 50, frameHeight:150});
         //Hi
     }
     
     create(){
+        var tempAnim = new AnimComp(this);
+        this.game.isMobile = [false];
+        
         this.isPaused = false; //The variable used to pause the entire game.
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const titleBack = this.add.image(960, 540, "titleBack"); //Title background
         this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_NewsRoom');
         this.helpButton = new Button(this, 1200, 920, 422, 88, null, "titleHowBtn", null, 'opscn_scene_How');
         this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
+        
+        this.mobileImage = this.add.image(1625, 810, 'isMobile')
+        this.mobileToggle = new Toggle(this, 1825, 810, 'mobileToggle', this.game.isMobile);
         
         const FONT_NAME = 'Amatica SC';
         let font1 = new FontFaceObserver('lores-9-wide');
@@ -69,6 +77,7 @@ class sceneBoot extends Phaser.Scene{
         font1.load().then(func);
         this.helpButton.spawn();
         this.aboutButton.spawn();
+        this.mobileToggle.spawn();
         var bgmConfig = {
             mute: false,
             volume: 0.65,

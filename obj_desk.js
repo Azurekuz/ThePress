@@ -30,8 +30,10 @@ class obj_desk{
            this.updateDesk();
         }
         this.game.grp_desks.add(this.phaserObject); //Add the Phaser sprite to the Phaser group for collision purposes.
-        this.phaserObject.setInteractive({useHandCursor: true}) 
-            .on('pointerdown', () => this.enterActiveState());
+        if(this.game.game.isMobile[0]){
+            this.phaserObject.setInteractive({useHandCursor: true}) 
+                .on('pointerdown', () => this.enterActiveState());
+        }
     }
     
     hire(reporterObj){
