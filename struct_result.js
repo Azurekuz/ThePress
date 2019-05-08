@@ -8,4 +8,8 @@ class struct_result{
         this.adPosArray = adPosArray;
         this.adNegArray = adNegArray;
     }
+    
+    induce(){
+        
+    }
 }

@@ -199,6 +199,7 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     }
     
     dismiss(){ //Dismiss the UI and all of its elements using possible maximum destruction... ...at least I'd like to think so.
+        console.log(this.selSource);
         for(var i = 0; i < this.yesNoPrompt.length; i += 1){
             this.yesNoPrompt[i].phaserObject.destroy();
             this.yesNoPrompt[i].phaserText.destroy();

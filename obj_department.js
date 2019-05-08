@@ -33,7 +33,7 @@ class obj_department{ //The department object
     
     accessDepartment(){
         console.log(this.depName + " has been accessed!"); //Just something to let me know this function works.
-        if(this.depName == "ads" && !this.game.ui_adSales.isActive){
+        if(this.depName == "ads" && !this.game.ui_adSales.isActive && !this.game.ui_storyPitch.isActive){
             console.log(this.game.player);
             this.grantAd(this.game.gameMaster.salesCollection.salesArray[Math.floor(Math.random()*this.game.gameMaster.salesCollection.salesArray.length)]);
            this.game.ui_adSales.popUp();

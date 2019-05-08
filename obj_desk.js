@@ -65,7 +65,7 @@ class obj_desk{
     }
    
     enterActiveState(){ //Called when the button is clicked.
-        if(this.workingReporter.needsNotify){
+        if(this.workingReporter.needsNotify && !this.game.ui_storyPitch.isActive && !this.game.ui_adSales.isActive){
             this.game.ui_storyPitch.popUp(this.workingReporter, this.workingReporter.storyPitch);
             this.game.ui_storyPitch.isActive = true;
             this.game.ui_storyPitch.curReporter = this.workingReporter;

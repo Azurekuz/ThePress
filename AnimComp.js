@@ -40,7 +40,7 @@ class AnimComp{
         this.game.anims.create({
             key: 'flip',
             frames: this.game.anims.generateFrameNumbers('mobileToggle', {start: 0, end: 6}),
-            frameRate: 16,
+            frameRate: 48,
             repeat: 0
         });
     }
