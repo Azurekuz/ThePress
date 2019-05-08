@@ -14,6 +14,7 @@ class scene_Intro extends Phaser.Scene{
             .on('pointerdown', () => this.skip());
         this.xBtn = new Button(this, 1845, 75, 150, 150, null, "xBtn", null, 'skInt', false);
         this.xBtn.spawn();
+        console.log(this.game.isPaused);
     }
     
     update(){
