@@ -23,6 +23,10 @@ class GameMaster{
         
         this.isDone = false;
         this.pitchInterval = 0;
+        
+        this.availableStoryArray = [];
+        this.availableStoryArray.push();
+        
     }
     
     update(){

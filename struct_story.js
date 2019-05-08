@@ -1,5 +1,6 @@
 class struct_story{ //The story structure that holds info about a given story!
-    constructor(context, description, sourceObjArray, deadlineArray, size, tier = 0, linkStoryID = null){
+    constructor(storyID, context, description, sourceObjArray, deadlineArray, size, tier = 0, linkStoryID = null){
+        this.storyID = storyID;
         this.game = context; //Phaser reference, although I don't know why we would need it here.
         this.description = description; //The bubble text
         this.sources = sourceObjArray; //Array of source objects

@@ -15,7 +15,8 @@ class ui_viewers{
     update(){
         if(this.curViewers != this.targetViewers){
            if(this.curViewers < this.targetViewers){
-              this.adjustCurrent(Math.floor((Math.random()*this.rngRange[1])+this.rngRange[0]));
+              this.adjustCurrent(Math.floor((Math.random()*(this.rngRange[1] + Math.ceil(((this.targetViewers - this.curViewers)*0.05)))))+(this.rngRange[0]+ Math.floor(((this.targetViewers - this.curViewers)*0.05))));
+               console.log(this.targetViewers);
             }
             if(this.curViewers > this.targetViewers){
                this.adjustCurrent(Math.floor(-(Math.random()*this.rngRange[1])+this.rngRange[0]));
