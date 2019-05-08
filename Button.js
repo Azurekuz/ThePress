@@ -102,6 +102,9 @@ class Button{ //I need to make a despawn() function, damn it!
             }else{
                 this.phaserObject.setFrame(0);
             }
+        }else if(this.purposeID.substr(0,5) == "skInt"){
+            this.game.game.isPaused = false;
+            this.game.scene.start("scene_NewsRoom");
         }
         if(this.sfxClick != null){
            this.sfxClick.play();

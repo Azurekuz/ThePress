@@ -12,7 +12,7 @@ class scene_Intro extends Phaser.Scene{
         this.video.depth = 0;
         this.video.setInteractive({useHandCursor: true}) 
             .on('pointerdown', () => this.skip());
-        this.xBtn = new Button(this, 1845, 75, 150, 150, null, "xBtn", null, 'opscn_scene_NewsRoom', false);
+        this.xBtn = new Button(this, 1845, 75, 150, 150, null, "xBtn", null, 'skpIn', false);
         this.xBtn.spawn();
     }
     
@@ -23,6 +23,7 @@ class scene_Intro extends Phaser.Scene{
     }
     
     skip(){
+        this.game.isPaused = false;
         this.scene.start("scene_NewsRoom");
     }
 }

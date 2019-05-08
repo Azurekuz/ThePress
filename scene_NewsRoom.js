@@ -73,7 +73,8 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
     }
     
     update(delta){ //The game update loop
-        if(!this.isPaused){ //if the game is not paused...
+        console.log(this.game.isPaused);
+        if(!this.game.isPaused){ //if the game is not paused...
             this.player.update(); //Then update the player (mostly means allowing the user to control the player)
             this.gameMaster.update();
             if(this.ui_storyPitch.isActive){ //Are we in the middle of handling a story pitch?

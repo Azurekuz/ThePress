@@ -61,7 +61,7 @@ class sceneBoot extends Phaser.Scene{
         if(this.game.isMobile == null || this.game.isMobile == undefined){
             this.game.isMobile = [false];
         }
-        this.isPaused = false; //The variable used to pause the entire game.
+        this.game.isPaused = true; //The variable used to pause the entire game.
         this.uiPaused = false; //The vaiable used to pause/prevent specific events when in the UI, like player movement.
         const titleBack = this.add.image(960, 540, "titleBack"); //Title background
         this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_Intro');
