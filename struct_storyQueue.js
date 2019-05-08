@@ -44,6 +44,9 @@ class struct_storyQueue{ //This keeps track of the stories a given reporter is w
             }else{ //Otherwise...
                 this.queue[i].progress.despawn(); //Make the progress bar despawn
                 this.curCap = this.curCap - this.queue[i].size;
+                if(this.queue[i].linkStoryID != null){
+                    this.game.gameMaster.storyCollection.makeAvailable(this.queue[i].linkStoryID);
+                }
                 this.removeStory(this.queue[i].description); //Remove the story from the queue.
                 
                 //Just a test to change some variables.;

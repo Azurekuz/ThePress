@@ -24,9 +24,6 @@ class GameMaster{
         this.isDone = false;
         this.pitchInterval = 0;
         
-        this.availableStoryArray = [];
-        this.availableStoryArray.push();
-        
     }
     
     update(){
@@ -78,10 +75,10 @@ class GameMaster{
     }
     
     pushPitch(){
-        var curPitch = this.storyCollection.pitchArray[Math.floor(Math.random()*this.storyCollection.length)];
+        var curPitch = this.storyCollection.availableStoryArray[Math.floor(Math.random()*this.storyCollection.availableStoryArray.length)];
         if(curPitch.pitched){
             while(curPitch.pitched){
-                curPitch = this.storyCollection.pitchArray[Math.floor(Math.random()*this.storyCollection.length)];      
+                curPitch = this.storyCollection.availableStoryArray[Math.floor(Math.random()*this.storyCollection.availableStoryArray.length)];      
             }
         }
         
