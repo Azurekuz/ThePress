@@ -85,6 +85,7 @@ class Button{ //I need to make a despawn() function, damn it!
         }
         if(this.purposeID.substr(0,5) == 'opscn'){
             if(this.purposeID.substr(6, this.purposeID.length) == "scene_Intro" && this.game.game.isMobile[0]){
+                this.game.game.isPaused = false;
                 this.game.scene.start("scene_NewsRoom");
             }else{
                 this.game.scene.start(this.purposeID.substr(6, this.purposeID.length));
