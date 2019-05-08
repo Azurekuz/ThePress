@@ -48,7 +48,7 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('xBtn', 'assets/ui/mainMenu/xBtn.png', {frameWidth: 65, frameHeight:65});
         this.load.spritesheet('guideBtn','assets/ui/mainMenu/JournoGuideButton.png', {frameWidth:405, frameHeight:113} );
         this.load.image('isMobile', 'assets/ui/mainMenu/isMobile.png');
-        this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 50, frameHeight:150});
+        this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 125, frameHeight:375});
         this.load.spritesheet('muteBTN', 'assets/ui/mainMenu/mute.png', {frameWidth: 100, frameHeight:100});
         this.load.image('smlNotif', 'assets/ui/office/SmlNotif.png', {frameWidth: 100, frameHeight:100});
         //Hi
@@ -72,8 +72,8 @@ class sceneBoot extends Phaser.Scene{
             this.game.curBGM.play();
         }
         
-        this.mobileImage = this.add.image(1625, 810, 'isMobile')
-        this.mobileToggle = new Toggle(this, 1825, 810, 'mobileToggle', this.game.isMobile);
+        this.mobileImage = this.add.image(1779, 950, 'isMobile')
+        this.mobileToggle = new Toggle(this, 1885, 910, 'mobileToggle', this.game.isMobile);
         
         const FONT_NAME = 'Amatica SC';
         let font1 = new FontFaceObserver('lores-9-wide');
