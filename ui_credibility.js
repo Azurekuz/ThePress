@@ -26,7 +26,6 @@ class ui_credibility{
         this.phaserBarFill.depth = 51;
         this.phaserBarFill.fillStyle(0x81554D, 0.9); 
         this.phaserBarFill.fillRect((this.xLoc + (232)), (this.yLoc + 15)- (this.barHeight/2), ((this.curCred/100) * (this.barWidth)), this.barHeight);
-        console.log(this.phaserBarFill);
     }
     
     despawn(){

@@ -62,6 +62,13 @@ class Button{ //I need to make a despawn() function, damn it!
                 this.phaserObject.setFrame(2);   
             }
         }
+        if(this.purposeID.substr(0,5) == "mtBGM"){
+           if(this.game.game.curBGM.config.mute){
+                this.phaserObject.setFrame(2);
+            }else{
+                this.phaserObject.setFrame(0);
+            }
+        }
     }
     
     enterActiveState(){ //Called when the button is clicked.
@@ -80,6 +87,13 @@ class Button{ //I need to make a despawn() function, damn it!
             //this.buttonParent.dismiss();
         }else if(this.purposeID.substr(0,5) == "opURL"){
             window.open(this.purposeID.substr(6, this.purposeID.length), "_blank");
+        }else if(this.purposeID.substr(0,5) == "mtBGM"){
+            this.game.game.curBGM.setMute(!this.game.game.curBGM.config.mute);
+            if(this.game.game.curBGM.config.mute){
+                this.phaserObject.setFrame(2);
+            }else{
+                this.phaserObject.setFrame(0);
+            }
         }
         if(this.sfxClick != null){
            this.sfxClick.play();

@@ -49,6 +49,7 @@ class sceneBoot extends Phaser.Scene{
         this.load.spritesheet('guideBtn','assets/ui/mainMenu/JournoGuideButton.png', {frameWidth:405, frameHeight:113} );
         this.load.image('isMobile', 'assets/ui/mainMenu/isMobile.png');
         this.load.spritesheet('mobileToggle', 'assets/ui/mainMenu/mobileToggle.png', {frameWidth: 50, frameHeight:150});
+        this.load.spritesheet('muteBTN', 'assets/ui/mainMenu/mute.png', {frameWidth: 100, frameHeight:100});
         //Hi
     }
     
@@ -62,6 +63,7 @@ class sceneBoot extends Phaser.Scene{
         this.playButton = new Button(this, 960, 810, 562, 114, null, "titlePlayBtn", null, 'opscn_scene_NewsRoom');
         this.helpButton = new Button(this, 1200, 920, 422, 88, null, "titleHowBtn", null, 'opscn_scene_How');
         this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
+        this.muteButton = new Button(this, 50, 1030, 100, 100, null, "muteBTN", null, 'mtBGM');
         
         this.mobileImage = this.add.image(1625, 810, 'isMobile')
         this.mobileToggle = new Toggle(this, 1825, 810, 'mobileToggle', this.game.isMobile);
@@ -78,6 +80,7 @@ class sceneBoot extends Phaser.Scene{
         this.helpButton.spawn();
         this.aboutButton.spawn();
         this.mobileToggle.spawn();
+        this.muteButton.spawn();
         var bgmConfig = {
             mute: false,
             volume: 0.65,
@@ -87,10 +90,11 @@ class sceneBoot extends Phaser.Scene{
             loop: true,
             delay: 0
         };
-        if(this.curBGM == null || this.curBGM == undefined){
-            this.curBGM = this.sound.add('bgmMain', bgmConfig);
-            this.curBGM.play();
+        if(this.game.curBGM == null || this.game.curBGM == undefined){
+            this.game.curBGM = this.sound.add('bgmMain', bgmConfig);
+            this.game.curBGM.play();
         }
+        console.log(this.game.curBGM);
         /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.

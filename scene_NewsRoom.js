@@ -14,6 +14,10 @@ class scene_NewsRoom extends Phaser.Scene {  //This is an extension of Phaser's 
         
         //console.log(dataReader);
         this.gameMaster = new GameMaster(this, 5000, 15, 0, 35);
+        this.muteButton = new Button(this, 50, 1030, 100, 100, null, "muteBTN", null, 'mtBGM');
+        this.muteButton.spawn();
+        this.muteButton.phaserObject.depth = 100;
+        
         this.grp_departments = this.gameMaster.grp_departments; //This is the Phaser group for sprites representing offices and departments like the Office or Ad Sales
         this.grp_desks = this.gameMaster.grp_desks; //This is the Phaser group for news desk sprites
         this.grp_workers = this.gameMaster.grp_workers;  //The Phaser group for workers, although we probably aren't going to be using this.

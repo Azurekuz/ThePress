@@ -133,7 +133,6 @@ class ui_storyPitch{ //OH BOY THIS IS THE STORY PITCH UI CODE, I'M SO GLAD THAT 
     
     update(){ //The UI's update loop
         if(this.yesNoPrompt.needsUpdate){ //Hey do we need to update because of the Y/N buttons being clicked?
-            console.log(this.yesNoPrompt[0]);
                if(this.yesNoPrompt[0].isSelected && this.isSelected()){
                     this.curReporter.takeOnStory(this.selDL.buttonValue);
                     this.yesNoPrompt[0].isSelected = false;
