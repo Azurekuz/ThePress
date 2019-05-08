@@ -4,8 +4,12 @@ class sys_notify{ //The notification system, woo!
         this.notifArray = []; //Array of notification objects.
     }
     
-    addNotif(owner){ //Add a notification, the owner/parent object is a required parameter for this function
-        owner.notif = new obj_notif(this.game, owner, 'notif'); //Make the notification
+    addNotif(owner, objType = 'reporter'){ //Add a notification, the owner/parent object is a required parameter for this function
+        if(objType == 'reporter'){
+            owner.notif = new obj_notif(this.game, owner, 'notif', 250, 160); //Make the notification
+        }else if(objType == 'department'){
+            owner.notif = new obj_notif(this.game, owner, 'notif'); //Make the notification
+        }
         this.notifArray.push(owner.notif); //Push said notification into the array.
         owner.notif.spawn(); //Spawn said notification
     }

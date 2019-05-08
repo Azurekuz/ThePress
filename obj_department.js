@@ -8,6 +8,7 @@ class obj_department{ //The department object
         this.height = height; //Height of the department
         this.depName = depName; //Name of the department
         this.spriteID = spriteID; //Department sprite
+        this.needsNotify = false; //Does this department need a notification?
         
         this.depValue;
         

@@ -66,6 +66,11 @@ class sceneBoot extends Phaser.Scene{
         this.aboutButton = new Button(this, 700, 920, 422, 88, null, "titleAboutBtn", null, 'opscn_scene_About');
         this.muteButton = new Button(this, 50, 1030, 100, 100, null, "muteBTN", null, 'mtBGM');
         
+        if(this.game.curBGM == null || this.game.curBGM == undefined){
+            this.game.curBGM = this.sound.add('bgmMain', bgmConfig);
+            this.game.curBGM.play();
+        }
+        
         this.mobileImage = this.add.image(1625, 810, 'isMobile')
         this.mobileToggle = new Toggle(this, 1825, 810, 'mobileToggle', this.game.isMobile);
         
@@ -91,10 +96,6 @@ class sceneBoot extends Phaser.Scene{
             loop: true,
             delay: 0
         };
-        if(this.game.curBGM == null || this.game.curBGM == undefined){
-            this.game.curBGM = this.sound.add('bgmMain', bgmConfig);
-            this.game.curBGM.play();
-        }
         /*const testBackground = this.add.image(960, 540, "testScreen"); //Title background
         
         //Create the start button using a custom made button object.

@@ -38,6 +38,14 @@ class Button{ //I need to make a despawn() function, damn it!
             this.phaserText.setOrigin(0,0.5); //Center it
         }
         
+        if(this.purposeID.substr(0,5) == "mtBGM"){
+           if(this.game.game.curBGM.config.mute){
+                this.phaserObject.setFrame(2);
+            }else{
+                this.phaserObject.setFrame(0);
+            }
+        }
+        
         /*This is what provides the interactability. Call different functions according to whether or not the user is hovering, clicking, or has their mouse off the button*/
         this.phaserObject.setInteractive({useHandCursor: true}) 
             .on('pointerover', () => this.enterHoverState() )
